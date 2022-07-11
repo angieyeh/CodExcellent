@@ -57,6 +57,7 @@ CREATE TABLE `Course_Instructors` (
   `instructor_id` int(11) NOT NULL,
   KEY `instructor_id_idx` (`instructor_id`),
   KEY `course_id_idx` (`course_id`),
+  CONSTRAINT `course_id_fk` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `instructor_id` FOREIGN KEY (`instructor_id`) REFERENCES `Instructors` (`instructor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -193,9 +194,9 @@ DROP TABLE IF EXISTS `Students`;
 CREATE TABLE `Students` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `phone_number` char(10) NOT NULL,
   `pronoun` varchar(50) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
   PRIMARY KEY (`student_id`),
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -219,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-10 20:31:08
+-- Dump completed on 2022-07-11  0:40:43
