@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `Courses`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Courses` (
   `course_id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL,
+  `course_name` varchar(50) NOT NULL,
   `level` varchar(50) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
