@@ -33,7 +33,7 @@ CREATE TABLE `Certificates` (
   KEY `course_id_idx` (`course_id`),
   CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `Certificates` (
 
 LOCK TABLES `Certificates` WRITE;
 /*!40000 ALTER TABLE `Certificates` DISABLE KEYS */;
+INSERT INTO `Certificates` VALUES (1,'Certificate of Completion',1,1),(2,'Certificate of Completion',1,2),(3,'Certificate of Completion',4,4);
 /*!40000 ALTER TABLE `Certificates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,6 +69,7 @@ CREATE TABLE `Course_Instructors` (
 
 LOCK TABLES `Course_Instructors` WRITE;
 /*!40000 ALTER TABLE `Course_Instructors` DISABLE KEYS */;
+INSERT INTO `Course_Instructors` VALUES (1,1),(2,1),(3,2),(4,3);
 /*!40000 ALTER TABLE `Course_Instructors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +89,7 @@ CREATE TABLE `Courses` (
   `status` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`course_id`),
   UNIQUE KEY `course_id_UNIQUE` (`course_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,6 +98,7 @@ CREATE TABLE `Courses` (
 
 LOCK TABLES `Courses` WRITE;
 /*!40000 ALTER TABLE `Courses` DISABLE KEYS */;
+INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-01-09','2023-03-17',1),(3,'Intro to Python','beginner','2022-01-03','2022-03-11',1),(4,'Database Design','intermediate','2022-01-03','2022-03-11',1);
 /*!40000 ALTER TABLE `Courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +115,7 @@ CREATE TABLE `Instructor_Titles` (
   PRIMARY KEY (`instructor_title_id`),
   UNIQUE KEY `instructor_title_id_UNIQUE` (`instructor_title_id`),
   UNIQUE KEY `instructor_title_UNIQUE` (`instructor_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,6 +124,7 @@ CREATE TABLE `Instructor_Titles` (
 
 LOCK TABLES `Instructor_Titles` WRITE;
 /*!40000 ALTER TABLE `Instructor_Titles` DISABLE KEYS */;
+INSERT INTO `Instructor_Titles` VALUES (3,'Mentor'),(1,'Teacher'),(2,'Teaching Assistant');
 /*!40000 ALTER TABLE `Instructor_Titles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +146,7 @@ CREATE TABLE `Instructors` (
   UNIQUE KEY `instructor_id_UNIQUE` (`instructor_id`),
   KEY `_idx` (`instructor_title_id`),
   CONSTRAINT `` FOREIGN KEY (`instructor_title_id`) REFERENCES `Instructor_Titles` (`instructor_title_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,6 +155,7 @@ CREATE TABLE `Instructors` (
 
 LOCK TABLES `Instructors` WRITE;
 /*!40000 ALTER TABLE `Instructors` DISABLE KEYS */;
+INSERT INTO `Instructors` VALUES (1,'Charlotte Charles','charlottecharles@gmail.com','2025550109','she/her',1),(2,'Cosima Niehaus','donnyhendrix@gmail.com','2025550111',NULL,1),(3,'Donny Hendrix','donnyhendrix@gmail.com','2025550110',NULL,1),(4,'Robin Scherbatsky','robinscherbatsky@gmail.com','2025550111',NULL,2);
 /*!40000 ALTER TABLE `Instructors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +167,7 @@ DROP TABLE IF EXISTS `Student_Enrollments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Student_Enrollments` (
-  `student_enrollment_id` int(11) NOT NULL,
+  `student_enrollment_id` int(11) NOT NULL AUTO_INCREMENT,
   `is_enrolled` tinyint(1) NOT NULL DEFAULT 1,
   `student_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
@@ -172,7 +177,7 @@ CREATE TABLE `Student_Enrollments` (
   KEY `fk_course_id_idx` (`course_id`),
   CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,6 +186,7 @@ CREATE TABLE `Student_Enrollments` (
 
 LOCK TABLES `Student_Enrollments` WRITE;
 /*!40000 ALTER TABLE `Student_Enrollments` DISABLE KEYS */;
+INSERT INTO `Student_Enrollments` VALUES (1,1,1,1),(2,1,1,1),(3,1,1,2),(4,1,2,3),(5,1,4,4);
 /*!40000 ALTER TABLE `Student_Enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +205,7 @@ CREATE TABLE `Students` (
   `pronoun` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`student_id`),
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +214,7 @@ CREATE TABLE `Students` (
 
 LOCK TABLES `Students` WRITE;
 /*!40000 ALTER TABLE `Students` DISABLE KEYS */;
+INSERT INTO `Students` VALUES (1,'Chloe Decker','chloedecker@gmail.com','2025550108','she/her'),(2,'Ella Lopez','ellalopez@gmail.com','2025550185','she/her'),(3,'Dan Espinoza','danespinoza@gmail.com','2025550114','he/him'),(4,'Rory Gilmore','rorygilmore@gmail.com','2025555514',NULL);
 /*!40000 ALTER TABLE `Students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-11  0:40:43
+-- Dump completed on 2022-07-11  0:58:50
