@@ -89,7 +89,7 @@ CREATE TABLE `Courses` (
   `status` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`course_id`),
   UNIQUE KEY `course_id_UNIQUE` (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `Courses` (
 
 LOCK TABLES `Courses` WRITE;
 /*!40000 ALTER TABLE `Courses` DISABLE KEYS */;
-INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-01-09','2023-03-17',1),(3,'Intro to Python','beginner','2022-01-03','2022-03-11',1),(4,'Database Design','intermediate','2022-01-03','2022-03-11',1);
+INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-01-09','2023-03-17',1),(3,'Intro to Python','beginner','2022-01-09','2022-03-17',1),(4,'Database Design','intermediate','2022-01-09','2022-03-17',1),(5,'Data Structures','Intermediate','2022-01-09','2022-03-17',0);
 /*!40000 ALTER TABLE `Courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `Student_Enrollments` (
   KEY `fk_course_id_idx` (`course_id`),
   CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `Student_Enrollments` (
 
 LOCK TABLES `Student_Enrollments` WRITE;
 /*!40000 ALTER TABLE `Student_Enrollments` DISABLE KEYS */;
-INSERT INTO `Student_Enrollments` VALUES (1,1,1,1),(2,1,1,1),(3,1,1,2),(4,1,2,3),(5,1,4,4);
+INSERT INTO `Student_Enrollments` VALUES (1,1,1,1),(2,1,1,2),(3,1,1,2),(4,1,2,3),(5,1,4,4),(6,0,2,4);
 /*!40000 ALTER TABLE `Student_Enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-11  0:58:50
+-- Dump completed on 2022-07-11 21:34:34
