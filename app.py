@@ -17,25 +17,34 @@ def root():
     return render_template("main.j2")
 
 
-@app.route('/certificates')
-def certificates():
-    return render_template("certificates.j2")
+@app.route('/students')
+def students():
+    return render_template("students.j2", students=sample_students)
+
 
 @app.route('/student_enrollments')
 def student_enrollments():
   return render_template("student_enrollments.j2")
-
-# Listener
-
-@app.route('/students')
-def students():
-    return render_template("students.j2", students=sample_students)
 
 
 @app.route('/instructors')
 def instructors():
     return render_template("instructors.j2")
 
+
+@app.route('/courses')
+def courses():
+    return render_template("courses.j2")
+
+
+@app.route('/course_instructor')
+def course_instructor():
+    return render_template("course_instructor.j2")
+
+
+@app.route('/certificates')
+def certificates():
+    return render_template("certificates.j2")
 
 # sample data
 
