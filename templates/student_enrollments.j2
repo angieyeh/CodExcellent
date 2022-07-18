@@ -1,0 +1,85 @@
+{#  Citation for the following HTML: 
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+<html>
+<head>
+<title>Student Enrollments</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Student Enrollments</h1>
+
+  [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
+
+  <div id="browse">
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>student_enrollment_id</th>
+      <th>student_id</th>
+      <th>course_id</th>
+      <th>is_enrolled</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  </div> <!-- browse -->
+  <div id="insert">
+      <form method="POST">
+          <legend><strong>Add Student Enrollment</strong></legend>
+            <fieldset class="fields">
+              <label>Student ID</label> <input type="text" name="student_id">  
+              <label>Course ID</label> <input type="text" name="course_id">  
+            </fieldset>
+            <input class="btn" type="submit" value="Add Student Enrollment">
+            <input class="btn" type="button" value="cancel">
+    </form> 
+  </div><!-- insert -->
+  <p>&nbsp;</p>
+  <div id="update">
+      <form method="POST">
+          <legend><strong>Update Student Enrollment</strong></legend>
+            <fieldset class="fields">
+              <label>Student ID</label> <input type="text" name="student_id">  
+              <label>Course ID</label> <input type="text" name="course_id"> 
+              <label>Enrolled</label> <input type="text" name="is_enrolled"> 
+            </fieldset>
+            <input class="btn" type="submit" value="Update Student Enrollment">
+            <input class="btn" type="button" value="cancel">
+    </form> 
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form method="POST">
+        <legend><strong>Delete Student Enrollment</strong></legend>
+            <fieldset class="fields">
+            <p>Are you sure you wish to delete the following?</p>
+            <input type="hidden" name="student_enrollment_id" value="1">
+            <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
+              
+      </fieldset>
+      <input class="btn" type="submit" value="Delete Student Enrollment">
+      <input class="btn" type="button" value="cancel">
+    </form> 
+  </div><!-- delete -->
+
+</body>
+</html>
