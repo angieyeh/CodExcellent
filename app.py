@@ -17,20 +17,24 @@ def root():
     return render_template("main.j2")
 
 
-@app.route('/certificates')
-def certificates():
-    return render_template("certificates.j2")
-
-
 @app.route('/students')
 def students():
     return render_template("students.j2", students=sample_students)
+
+
+@app.route('/courses')
+def instructors():
+    return render_template("courses.j2")
 
 
 @app.route('/instructors')
 def instructors():
     return render_template("instructors.j2")
 
+
+@app.route('/certificates')
+def certificates():
+    return render_template("certificates.j2")
 
 # sample data
 

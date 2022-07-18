@@ -1,13 +1,13 @@
-{#  Citation for the following HTML: 
+{#  Citation for the following HTML:
     Date: 07/18/2022
     Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
 <html>
 <head>
-<title>People</title>
+<title>Certificates</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body onload="browseCertificates()">
+<body>
   <h1>Certificates</h1>
 
   [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
@@ -41,24 +41,24 @@
       <form method="POST">
           <legend><strong>Add Certificate</strong></legend>
             <fieldset class="fields">
-              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
-              <label>Certificate Title</label> <input type="text" name="certificate_title">  
+              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">
+              <label>Certificate Title</label> <input type="text" name="certificate_title">
             </fieldset>
             <input class="btn" type="submit" value="Add Certificate">
-            <input class="btn" type="button" value="cancel" onClick="browseCertificates()">
-    </form> 
+            <input class="btn" type="button" value="cancel">
+    </form>
   </div><!-- insert -->
   <p>&nbsp;</p>
   <div id="update">
       <form method="POST">
           <legend><strong>Update Certificate</strong></legend>
             <fieldset class="fields">
-              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
-              <label>Certificate Title</label> <input type="text" name="certificate_title">  
+              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">
+              <label>Certificate Title</label> <input type="text" name="certificate_title">
             </fieldset>
-            <input class="btn" type="submit" value="Save Update Certificate">
-            <input class="btn" type="button" value="cancel" onClick="browseCertificates()">
-    </form> 
+            <input class="btn" type="submit" value="Update Certificate">
+            <input class="btn" type="button" value="cancel">
+    </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
@@ -67,20 +67,12 @@
             <fieldset class="fields">
             <p>Are you sure you wish to delete the following?</p>
             <input type="hidden" name="certificate_id" value="1">
-            <label>Certificate ID</label> <input type="text" name="certificate_title">  
-              
+            <label>Certificate ID</label> <input type="text" name="certificate_title">
+
       </fieldset>
       <input class="btn" type="submit" value="Delete Certificate">
-      <input class="btn" type="button" value="cancel" onClick="browseCertificates()">
-    </form> 
+      <input class="btn" type="button" value="cancel">
+    </form>
   </div><!-- delete -->
-
-  <script language="JavaScript">
-    function newCertificate() {  }
-    function updateCertificate(pid) { }
-    function deleteCertificate(pid) { }
-    function browseCertificates() { }
-    function showAll() { }
-  </script>
 </body>
 </html>
