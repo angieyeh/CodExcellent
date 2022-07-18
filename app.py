@@ -15,10 +15,14 @@ app = Flask(__name__)
 def root():
   return render_template("main.j2")
 
+@app.route('/certificates')
+def certificates():
+  return render_template("certificates.j2")
+
 # Listener
 
 if __name__ == "__main__":
-  port = int(os.environ.get('PORT', 8080)) 
+  port = int(os.environ.get('PORT', 8888)) 
   #                                 ^^^^
   #              You can replace this number with any valid port
   
