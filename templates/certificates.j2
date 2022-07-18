@@ -17,22 +17,22 @@
     <tr>
       <th>certificate_id</th>
       <th>certificate_title</th>
-      <th>student_enrollment_id</th>
+      <th>issue_date</th>
     </tr>
     <tr>
       <td>1</td>
       <td>Certificate of Completion</td>
-      <td>1</td>
+      <td>2022-03-17</td>
     </tr>
     <tr>
       <td>2</td>
       <td>Certificate of Completion</td>
-      <td>1</td>
+      <td>2022-03-17</td>
     </tr>
     <tr>
       <td>3</td>
       <td>Certificate of Completion</td>
-      <td>2</td>
+      <td>2022-03-17</td>
     </tr>
   </table>
   <p>&nbsp;</p>
@@ -41,8 +41,8 @@
       <form method="POST">
           <legend><strong>Add Certificate</strong></legend>
             <fieldset class="fields">
-              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
-              <label>Certificate Title</label> <input type="text" name="certificate_title">  
+              <label>Certificate Title</label> <input type="text" name="certificate_title">
+              <label>Issue Date</label> <input type="text" name="issue_date">  
             </fieldset>
             <input class="btn" type="submit" value="Add Certificate">
             <input class="btn" type="button" value="cancel">
@@ -53,8 +53,8 @@
       <form method="POST">
           <legend><strong>Update Certificate</strong></legend>
             <fieldset class="fields">
-              <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
               <label>Certificate Title</label> <input type="text" name="certificate_title">  
+              <label>Issue Date</label> <input type="text" name="issue_date">  
             </fieldset>
             <input class="btn" type="submit" value="Update Certificate">
             <input class="btn" type="button" value="cancel">
