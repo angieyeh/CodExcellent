@@ -29,7 +29,7 @@ def student_enrollments():
 
 @app.route('/instructors')
 def instructors():
-    return render_template("instructors.j2")
+    return render_template("instructors.j2", instructors=sample_instructors)
 
 
 @app.route('/courses')
@@ -48,33 +48,68 @@ def certificates():
 
 # sample data
 
+
 sample_students = [
-    {"student_id": "Thomas",
-     "name": 33,
-     "email": "New Mexico",
-     "phone_number": "Blue",
-     "pronoun": "Blue"
+    {"student_id": 1,
+     "name": "Chloe Decker",
+     "email": "chloedecker@gmail.com",
+     "phone_number": "2025550108",
+     "pronoun": "she/her"
      },
     {
-        "student_id": "Thomas",
-        "name": 33,
-        "email": "New Mexico",
-        "phone_number": "Blue",
-        "pronoun": "Blue"
+        "student_id": 2,
+        "name": "Ella Lopez",
+        "email": "ellalopez@gmail.com",
+        "phone_number": "2025550185",
+        "pronoun": "she/her"
     },
     {
-        "student_id": "Thomas",
-        "name": 33,
-        "email": "New Mexico",
-        "phone_number": "Blue",
-        "pronoun": "Blue"
+        "student_id": 3,
+        "name": "Dan Espinoza",
+        "email": "danespinoza@gmail.com",
+        "phone_number": "2025550114",
+        "pronoun": "he/him"
     },
     {
-        "student_id": "Thomas",
-        "name": 33,
-        "email": "New Mexico",
-        "phone_number": "Blue",
-        "pronoun": "Blue"
+        "student_id": 4,
+        "name": "Rory Gilmore",
+        "email": "rorygilmore@gmail.com",
+        "phone_number": "2025555514",
+        "pronoun": None
+    }]
+
+
+sample_instructors = [
+    {"instructor_id": 1,
+     "name": "Charlotte Charles",
+     "email": "charlottecharles@gmail.com",
+     "instructor_title": "Teacher",
+     "phone_number": "2025550109",
+     "pronoun": "she/her"
+     },
+    {
+        "instructor_id": 2,
+        "name": "Cosima Niehaus",
+        "email": "cosima@gmail.com",
+        "phone_number": "2025550111",
+        "instructor_title": "Teacher",
+        "pronoun": None
+    },
+    {
+        "instructor_id": 3,
+        "name": "Donny Hendrix",
+        "email": "donnyhendrix@gmail.com",
+        "phone_number": "2025550110",
+        "instructor_title": "Teacher",
+        "pronoun": None
+    },
+    {
+        "instructor_id": 4,
+        "name": "Robin Scherbatsky",
+        "email": "robinscherbatsky@gmail.com",
+        "phone_number": "2025550111",
+        "instructor_title": "Teaching Assistant",
+        "pronoun": None
     }]
 
 # Listener
