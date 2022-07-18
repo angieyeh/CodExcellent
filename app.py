@@ -21,6 +21,11 @@ def root():
 def certificates():
     return render_template("certificates.j2")
 
+@app.route('/student_enrollments')
+def student_enrollments():
+  return render_template("student_enrollments.j2")
+
+# Listener
 
 @app.route('/students')
 def students():
