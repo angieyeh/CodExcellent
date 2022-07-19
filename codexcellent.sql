@@ -92,11 +92,9 @@ CREATE TABLE `Course_Instructors` (
 CREATE TABLE `Certificates` (
   `certificate_id` int(11) NOT NULL AUTO_INCREMENT,
   `certificate_title` varchar(100) NOT NULL,
-  `student_enrollments_id` int(11) NOT NULL,
-  PRIMARY KEY (`certificate_id`),
-  KEY `student_enrollment_id_idx` (`student_enrollments_id`),
-  CONSTRAINT `student_enrollment_id` FOREIGN KEY (`student_enrollments_id`) REFERENCES `Student_Enrollments` (`student_enrollments_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `issue_date` date NOT NULL,
+  PRIMARY KEY (`certificate_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 
 -- ---------------------------------
@@ -142,6 +140,6 @@ VALUES (1,1),(1,4),(3,2),(4,3), (6,3);
 
 INSERT INTO `Certificates`
 VALUES
-    (1,'Certificate of Completion', 1),
-    (2,'Certificate of Completion', 5),
-    (3,'Certificate of Completion', 4);
+    (1,'Certificate of Completion','2023-03-17'),
+    (2,'Certificate of Completion', '2022-03-17'),
+    (3,'Certificate of Completion', '2022-06-17');
