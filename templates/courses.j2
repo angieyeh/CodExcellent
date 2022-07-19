@@ -100,5 +100,57 @@
       <input class="btn" type="button" value="Cancel">
     </form>
   </div>
+
+  <h1>Course Instructors</h1>
+
+<div id="ci_browse">
+  <table border="1" cellpadding="5">
+      <thead>
+      <tr>
+        <th>Course ID</th>
+        <th>Instructor ID</th>
+      </tr>
+      </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2</td>
+        </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div id="ci_insert">
+      <form method="POST">
+          <legend><strong>Add Course Instructors</strong></legend>
+            <fieldset class="fields">
+                <label>Course ID</label> <input type="number" name="course_id">
+                <label>Instructor ID</label> <input type="number" name="instructor_id">
+            </fieldset>
+            <input class="btn" type="submit" value="Submit">
+            <input class="btn" type="button" value="Cancel">
+    </form>
+  </div>
+<!-- update -->
+  <div id="ci_update">
+      <form method="PUT">
+          <legend><strong>Update Course Instructors</strong></legend>
+            <fieldset class="fields">
+                <label>Course ID</label> <input type="number" name="course_id">
+                <label>Instructor ID</label> <input type="number" name="instructor_id">
+            </fieldset>
+            <input class="btn" type="submit" value="Update">
+            <input class="btn" type="button" value="Cancel">
+    </form>
+  </div>
 </body>
 </html>

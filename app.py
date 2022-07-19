@@ -34,7 +34,7 @@ def instructors():
 
 @app.route('/courses')
 def courses():
-    return render_template("courses.j2")
+    return render_template("courses.j2", courses=sample_courses)
 
 
 @app.route('/course_instructor')
@@ -111,6 +111,34 @@ sample_instructors = [
         "instructor_title": "Teaching Assistant",
         "pronoun": None
     }]
+
+
+sample_courses = [
+    {
+        "course_id": 1,
+        "course_name": "Intro to Programming",
+        "level": "beginner",
+        "start_date": "2022-01-09",
+        "end_date": "2022-10-17",
+        "status": 1
+    },
+{
+        "course_id": 2,
+        "course_name": "Intro to Programming",
+        "level": "beginner",
+        "start_date": "2020-01-09",
+        "end_date": "2020-03-17",
+        "status": 0
+    },
+{
+        "course_id": 3,
+        "course_name": "Database Design",
+        "level": "intermediate",
+        "start_date": "2022-05-09",
+        "end_date": "2023-07-17",
+        "status": 1
+    },
+]
 
 # Listener
 if __name__ == "__main__":
