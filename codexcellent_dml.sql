@@ -12,7 +12,7 @@ student_id = :student_id_from_the_update_form;
 SELECT instructor_id , name, email, phone_number, instructor_title, pronoun FROM Instructors;
 -- add a new Instructor
 INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) VALUES 
-(:name_input, :email_input, :phone_number_input, :instructor_title_input, :pronoun_input);
+(:name_input, :email_input, :phone_number_input, :instructor_title_input_from_dropdown, :pronoun_input);
 -- update an instructors's data based on submission of the Update Instructors form 
 UPDATE Instructors SET name = :name_input, email = :email_input, phone_number = phone_number_input, instructor_title=:instructor_title, pronoun = :pronoun_input WHERE 
 instructor_id = :student_id_from_the_update_form;
@@ -21,7 +21,7 @@ instructor_id = :student_id_from_the_update_form;
 SELECT course_id , course_name	, level, start_date, end_date, status FROM Courses;
 -- add a new Course
 INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES 
-(:course_names_input, :level_input, :start_date_input, :end_date_input, :status_input);
+(:course_names_input, :level_input_from_dropdown, :start_date_input, :end_date_input, :status_input_from_dropdown);
 -- update a courses's data based on submission of the Update Courses form 
 UPDATE Courses SET course_name = :course_name_input, level = :level_input, start_date =start_date_input, end_date=:end_date_input WHERE 
 course_id= :course_id_from_the_update_form;
