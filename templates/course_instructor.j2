@@ -1,16 +1,9 @@
-<html>
-<head>
-<title>Courses</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
+{% extends "layout.j2" %}
 
-<body>
-
-    <h1>Course Instructors</h1>
-
-    [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
+{% block table %}
 
 <div id="ci_browse">
+    <h1> Course Instructors</h1>
   <table border="1" cellpadding="5">
       <thead>
       <tr>
@@ -47,5 +40,4 @@
             <input class="btn" type="button" value="Cancel">
     </form>
   </div>
-</body>
-</html>
+{% endblock table %}
