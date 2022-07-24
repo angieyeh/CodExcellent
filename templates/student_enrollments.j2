@@ -1,17 +1,11 @@
 {#  Citation for the following HTML: 
     Date: 07/18/2022
-    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
 
-<html>
-<head>
-<title>Student Enrollments</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
+{% extends "layout.j2" %}
 
-<body>
+{% block table %}
   <h1>Student Enrollments</h1>
-
-  [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
 
   <div id="browse">
   <table border="1" cellpadding="5">
@@ -86,6 +80,4 @@
       <input class="btn" type="button" value="cancel">
     </form> 
   </div><!-- delete -->
-
-</body>
-</html>
+{% endblock table %}

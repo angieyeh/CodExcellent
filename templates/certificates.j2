@@ -1,16 +1,12 @@
 {#  Citation for the following HTML: 
     Date: 07/18/2022
-    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
-<html>
-<head>
-<title>Certificates</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
 
-<body>
+{% extends "layout.j2" %}
+
+{% block table %}
   <h1>Certificates</h1>
 
-  [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
 
   <!-- browse -->
   <div id="browse">
@@ -50,5 +46,4 @@
             <input class="btn" type="button" value="cancel">
     </form> 
   </div>
-</body>
-</html>
+{% endblock table %}
