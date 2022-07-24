@@ -12,6 +12,7 @@
 
   [ <a href="students">Students</a> | <a href="student_enrollments">Student Enrollments</a> | <a href="instructors">Instructor</a> | <a href="courses">Courses</a> | <a href="certificates">Certificates</a> ]
 
+  <!-- browse -->
   <div id="browse">
   <table border="1" cellpadding="5">
     <tr>
@@ -36,7 +37,8 @@
     </tr>
   </table>
   <p>&nbsp;</p>
-  </div> <!-- browse -->
+  </div>
+  <!-- insert -->
   <div id="insert">
       <form method="POST">
           <legend><strong>Add Certificate</strong></legend>
@@ -47,32 +49,6 @@
             <input class="btn" type="submit" value="Add Certificate">
             <input class="btn" type="button" value="cancel">
     </form> 
-  </div><!-- insert -->
-  <p>&nbsp;</p>
-  <div id="update">
-      <form method="POST">
-          <legend><strong>Update Certificate</strong></legend>
-            <fieldset class="fields">
-              <label>Certificate Title</label> <input type="text" name="certificate_title">  
-              <label>Issue Date</label> <input type="text" name="issue_date">  
-            </fieldset>
-            <input class="btn" type="submit" value="Update Certificate">
-            <input class="btn" type="button" value="cancel">
-    </form> 
-  </div><!-- update -->
-  <p>&nbsp;</p>
-  <div id="delete" style="display: block">
-    <form method="POST">
-        <legend><strong>Delete Certificate</strong></legend>
-            <fieldset class="fields">
-            <p>Are you sure you wish to delete the following?</p>
-            <input type="hidden" name="certificate_id" value="1">
-            <label>Certificate ID</label> <input type="text" name="certificate_title">  
-              
-      </fieldset>
-      <input class="btn" type="submit" value="Delete Certificate">
-      <input class="btn" type="button" value="cancel">
-    </form> 
-  </div><!-- delete -->
+  </div>
 </body>
 </html>
