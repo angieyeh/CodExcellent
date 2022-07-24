@@ -39,8 +39,8 @@ CREATE TABLE `Student_Enrollments` (
   KEY `student_id_idx` (`student_id`),
   KEY `certificate_id_idx` (`certificate_id`),
   CONSTRAINT `certificate_id` FOREIGN KEY (`certificate_id`) REFERENCES `Certificates` (`certificate_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
-  CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 --
 -- Table structure for table `Instructors`
