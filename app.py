@@ -122,22 +122,30 @@ sample_courses = [
         "end_date": "2022-10-17",
         "status": 1
     },
-{
+    {
         "course_id": 2,
-        "course_name": "Intro to Programming",
+        "course_name": "Intro to HTML/CSS and Javascript",
         "level": "beginner",
         "start_date": "2020-01-09",
         "end_date": "2020-03-17",
-        "status": 0
+        "status": 1
     },
-{
+    {
         "course_id": 3,
-        "course_name": "Database Design",
-        "level": "intermediate",
+        "course_name": "Intro to Python",
+        "level": "beginner",
         "start_date": "2022-05-09",
         "end_date": "2023-07-17",
         "status": 1
     },
+    {
+        "course_id": 4,
+        "course_name": "Data Structures",
+        "level": "intermediate",
+        "start_date": "2022-05-09",
+        "end_date": "2023-07-17",
+        "status": 0
+    }
 ]
 
 if __name__ == "__main__":
