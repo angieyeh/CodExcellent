@@ -36,7 +36,7 @@ CREATE TABLE `Certificates` (
 
 LOCK TABLES `Certificates` WRITE;
 /*!40000 ALTER TABLE `Certificates` DISABLE KEYS */;
-INSERT INTO `Certificates` VALUES (1,'Certificate of Completion','0000-00-00'),(2,'Certificate of Completion','0000-00-00'),(3,'Certificate of Completion','0000-00-00');
+INSERT INTO `Certificates` VALUES (1,'Certificate of Completion','2022-03-17'),(2,'Certificate of Completion','2023-06-17'),(3,'Certificate of Completion','2023-06-17');
 /*!40000 ALTER TABLE `Certificates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,12 +133,12 @@ DROP TABLE IF EXISTS `Student_Enrollments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Student_Enrollments` (
-  `student_enrollments_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_enrollment_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `is_enrolled` tinyint(1) NOT NULL DEFAULT 1,
   `certificate_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`student_enrollments_id`),
+  PRIMARY KEY (`student_enrollment_id`),
   KEY `course_id_idx` (`course_id`),
   KEY `student_id_idx` (`student_id`),
   KEY `certificate_id_idx` (`certificate_id`),
@@ -154,7 +154,7 @@ CREATE TABLE `Student_Enrollments` (
 
 LOCK TABLES `Student_Enrollments` WRITE;
 /*!40000 ALTER TABLE `Student_Enrollments` DISABLE KEYS */;
-INSERT INTO `Student_Enrollments` VALUES (1,1,1,1,1),(2,1,1,0,NULL),(3,1,3,0,NULL),(4,2,2,1,2),(5,3,2,1,3),(6,4,2,0,NULL);
+INSERT INTO `Student_Enrollments` VALUES (1,1,1,1,1),(2,2,1,0,NULL),(3,1,3,0,NULL),(4,2,2,1,2),(5,3,2,1,3),(6,4,2,0,NULL);
 /*!40000 ALTER TABLE `Student_Enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
