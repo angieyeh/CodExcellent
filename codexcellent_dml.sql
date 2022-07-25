@@ -17,7 +17,9 @@ INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) V
 
 ---------------COURSES---------------
 -- get all course_ids, course_names, levels, start_dates, end_dates, statuses to populate the Courses UI
-SELECT course_id , course_name	, level, start_date, end_date, status FROM Courses;
+SELECT course_id , course_name, level, start_date, end_date, status FROM Courses;
+-- Search a course by course name
+SELECT course_id , course_name, level, start_date, end_date, status FROM Courses WHERE course_name = :course_name_input_from_dropdown;
 -- add a new Course
 INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES 
 (:course_names_input, :level_input_from_dropdown, :start_date_input, :end_date_input, :status_input_from_dropdown);
