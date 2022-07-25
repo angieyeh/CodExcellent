@@ -141,6 +141,6 @@ sample_courses = [
 ]
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 8888))
+    port = int(os.environ.get('PORT', 8281))
 
     app.run(port=port, debug=True)
