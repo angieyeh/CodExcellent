@@ -23,8 +23,12 @@ INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES
 (:course_names_input, :level_input_from_dropdown, :start_date_input, :end_date_input, :status_input_from_dropdown);
 
 ---------------CERTIFICATES---------------
--- get all certificate_id , certificate_title, issue_date to populate the Certificates UI
-SELECT certificate_id , certificate_title, issue_date FROM Certificates;
+-- get all certificate_id , student_name, course_name, certificate_title, issue_date to populate the Certificates UI
+SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date 
+	FROM Certificates cert
+	INNER JOIN Student_Enrollments se ON cert.certificate_id = se.certificate_id
+	INNER JOIN Students st ON se.student_id = st.student_id
+	INNER JOIN Courses co ON se.course_id = co.course_id;
 -- add a new Certificate
 INSERT INTO Certificates (certificate_title, issue_date ) VALUES 
 (:certificate_title_input, :issue_date_input);
