@@ -92,7 +92,7 @@ CREATE TABLE `Courses` (
 
 LOCK TABLES `Courses` WRITE;
 /*!40000 ALTER TABLE `Courses` DISABLE KEYS */;
-INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-03-09','2023-06-17',1),(3,'Intro to Python','beginner','2022-01-09','2022-03-17',1),(4,'Database Design','intermediate','2022-01-09','2022-03-17',1),(5,'Data Structures','Intermediate','2022-01-09','2022-03-17',0),(6,'Intro to Programming','beginner','2022-01-09','2022-03-17',1);
+INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-03-09','2023-06-17',1),(3,'Intro to Python','beginner','2022-01-09','2022-03-17',1),(4,'Database Design','intermediate','2022-01-09','2022-03-17',1),(5,'Data Structures','intermediate','2022-01-09','2022-03-17',0),(6,'Web Development','intermediate','2022-01-09','2022-03-17',1);
 /*!40000 ALTER TABLE `Courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
