@@ -83,7 +83,7 @@ CREATE TABLE `Courses` (
   `end_date` date NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `Courses` (
 
 LOCK TABLES `Courses` WRITE;
 /*!40000 ALTER TABLE `Courses` DISABLE KEYS */;
-INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-03-09','2023-06-17',1),(3,'Intro to Python','beginner','2022-01-09','2022-03-17',1),(4,'Database Design','intermediate','2022-01-09','2022-03-17',1),(5,'Data Structures','intermediate','2022-01-09','2022-03-17',0),(6,'Web Development','intermediate','2022-01-09','2022-03-17',1);
+INSERT INTO `Courses` VALUES (1,'Intro to Programming','beginner','2023-01-09','2023-03-17',1),(2,'Intro to HTML/CSS and Javascript','beginner','2023-03-09','2023-06-17',1),(3,'Intro to Python','beginner','2022-01-09','2022-03-17',1),(4,'Database Design','intermediate','2022-01-09','2022-03-17',1),(5,'Data Structures','intermediate','2022-01-09','2022-03-17',0),(6,'Web Development','intermediate','2022-01-09','2022-03-17',1),(7,'Intro to Programming','beginner','2023-01-09','2023-03-17',0);
 /*!40000 ALTER TABLE `Courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
