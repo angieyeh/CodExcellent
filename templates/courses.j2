@@ -5,7 +5,7 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <h1>Courses</h1>
+  <h1>Manage Courses</h1>
 
 <!-- browse -->
   <div id="browse">
@@ -15,8 +15,8 @@
         <th>Course ID</th>
         <th>Course name</th>
         <th>Level</th>
-        <th>Start date</th>
-        <th>End date</th>
+        <th>Start Date</th>
+        <th>End Date</th>
           <th>Status</th>
       </tr>
       </thead>
@@ -41,7 +41,7 @@
           <legend><strong>Add Course</strong></legend>
           <fieldset class="fields">
               <label>Course name</label> <input type="text" name="course_name">
-              <label for="level">Choose a level</label>
+              <label for="level">Level</label>
                   <select name="level" id="level">
                       <option value="beginner">beginner</option>
                       <option value="intermediate">intermediate</option>
@@ -54,8 +54,8 @@
                   <option value="0">cancelled</option>
               </select>
           </fieldset>
-          <input class="btn" type="submit" value="Add Course">
-          <input class="btn" type="button" value="Cancel">
+          <input class="btn" type="submit" value="Add">
+          <input class="btn" type="button" value="Clear">
     </form>
   </div>
 
@@ -72,7 +72,7 @@
           <option value="data_structures">Data Structures</option>
           <option value="web_development">Web Development</option>
       </select>
-      <input class="btn" type="submit" value="Add Course">
+      <input class="btn" type="submit" value="Search">
     </form>
   </div>
 {% endblock table %}

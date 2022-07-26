@@ -5,7 +5,7 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <h1>Students</h1>
+  <h1>Manage Students</h1>
 
 <!-- browse -->
   <div id="browse">
@@ -15,7 +15,7 @@
         <th>Student ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Phone number</th>
+        <th>Phone Number</th>
         <th>Pronoun</th>
       </tr>
       </thead>
@@ -36,30 +36,31 @@
   <!-- insert -->
   <div id="insert">
       <form method="POST">
-          <legend><strong>Add Students</strong></legend>
+          <legend><strong>Add New Student</strong></legend>
             <fieldset class="fields">
-                <label>Name</label> <input type="text" name="student_name">
-                <label>Email</label> <input type="text" name="student_email">
-                <label>Phone number</label> <input type="text" name="student_phone_number">
-                <label>Pronoun</label> <input type="text" name="student_pronoun">
+              <label>Full Name</label> <input type="text" name="student_name">
+              <label>Email</label> <input type="text" name="student_email">
+              <label>Phone Number</label> <input type="text" name="student_phone_number">
+              <label>Pronoun</label> <input type="text" name="student_pronoun">
             </fieldset>
-            <input class="btn" type="submit" value="Add Student">
-            <input class="btn" type="button" value="Cancel">
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
     </form>
   </div>
   <p>&nbsp;</p>
   <!-- update -->
   <div id="update">
       <form method="PUT">
-          <legend><strong>Update Student Information</strong></legend>
+          <legend><strong>Update Existing Student Information</strong></legend>
             <fieldset class="fields">
-                <label>Name</label> <input type="text" name="student_name">
-                <label>Email</label> <input type="text" name="student_email">
-                <label>Phone number</label> <input type="text" name="student_phone_number">
-                <label>Pronoun</label> <input type="text" name="student_pronoun">
+              <label>Student ID</label> <input type="text" name="student_id">
+              <label>Full Name</label> <input type="text" name="student_name">
+              <label>Email</label> <input type="text" name="student_email">
+              <label>Phone Number</label> <input type="text" name="student_phone_number">
+              <label>Pronoun</label> <input type="text" name="student_pronoun">
             </fieldset>
             <input class="btn" type="submit" value="Update">
-            <input class="btn" type="button" value="Cancel">
+            <input class="btn" type="button" value="Clear">
     </form>
   </div>
 {% endblock table %}

@@ -5,18 +5,18 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <h1>Certificates</h1>
+  <h1>Manage Certificates</h1>
 
 
   <!-- browse -->
   <div id="browse">
   <table border="1" cellpadding="5">
     <tr>
-      <th>certificate_id</th>
-      <th>student_name</th>
-      <th>course_name</th>
-      <th>certificate_title</th>
-      <th>issue_date</th>
+      <th>Certificate ID</th>
+      <th>Student Name</th>
+      <th>Course Name</th>
+      <th>Certificate Title</th>
+      <th>Issue Date</th>
     </tr>
     <tr>
       <td>1</td>
@@ -45,13 +45,13 @@
   <!-- insert -->
   <div id="insert">
       <form method="POST">
-          <legend><strong>Add Certificate</strong></legend>
+          <legend><strong>Add New Certificate</strong></legend>
             <fieldset class="fields">
               <label>Certificate Title</label> <input type="text" name="certificate_title">
               <label>Issue Date</label> <input type="text" name="issue_date">  
             </fieldset>
-            <input class="btn" type="submit" value="Add Certificate">
-            <input class="btn" type="button" value="cancel">
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
     </form> 
   </div>
 {% endblock table %}

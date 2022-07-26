@@ -5,18 +5,18 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <h1>Instructors</h1>
+  <h1>Manage Instructors</h1>
 
 <!-- browse -->
   <div id="browse">
   <table border="1" cellpadding="5">
       <thead>
       <tr>
-         <th>Instructors ID</th>
+         <th>Instructor ID</th>
          <th>Name</th>
          <th>Email</th>
-         <th>Phone number</th>
-          <th>Instructor itle</th>
+         <th>Phone Number</th>
+          <th>Instructor Title</th>
          <th>Pronoun</th>
       </tr>
       </thead>
@@ -38,16 +38,16 @@
   <!-- insert -->
   <div id="insert">
       <form method="POST">
-          <legend><strong>Add Instructors</strong></legend>
+          <legend><strong>Add New Instructor</strong></legend>
             <fieldset class="fields">
                 <label>Name</label> <input type="text" name="instructor_name">
                 <label>Email</label> <input type="text" name="instructor_email">
-                <label>Phone number</label> <input type="text" name="instructor_phone_number">
+                <label>Phone Number</label> <input type="text" name="instructor_phone_number">
                 <label>Instructor Title</label> <input type="text" name="instructor_title">
                 <label>Pronoun</label> <input type="text" name="instructor_pronoun">
             </fieldset>
-            <input class="btn" type="submit" value="Add Instructor">
-            <input class="btn" type="button" value="Cancel">
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
     </form>
   </div>
 {% endblock table %}
