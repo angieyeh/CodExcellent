@@ -56,7 +56,7 @@ DELETE FROM Student_Enrollments WHERE student_enrollment_id = :student_enrollmen
 
 ---------------COURSE_INSTRUCTORS---------------
 -- join Courses and Instructors tables to this table so that we can output course_name and instructor's name
-SELECT Course_Instructors.course_id, Courses.course_name, Course_Instructors.instructor_id, Instructors.name
+SELECT Course_Instructors.course_id, Courses.course_name, Course_Instructors.instructor_id, Instructors.name, Instructor.instructor_title
 FROM Course_Instructors
 JOIN Courses ON Course_Instructors.course_id = Courses.course_id
 JOIN Instructors ON Course_Instructors.instructor_id = Instructors.instructor_id;
