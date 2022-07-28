@@ -20,39 +20,19 @@
       <th>Is Enrolled</th>
       <th>Certificate ID</th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>Chloe Decker</td>
-      <td>1</td>
-      <td>Intro to Programming</td>
-      <td>2023-01-09</td>
-      <td>2023-03-17</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>1</td>
-      <td>Chloe Decker</td>
-      <td>3</td>
-      <td>Intro to Python</td>
-      <td>2023-01-09</td>
-      <td>2023-03-17</td>
-      <td>1</td>
-      <td>NULL</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2</td>
-      <td>Ella Lopez</td>
-      <td>2</td>
-      <td>Intro to Programming</td>
-      <td>2023-01-09</td>
-      <td>2023-03-17</td>
-      <td>1</td>
-      <td>NULL</td>
-    </tr>
+    {% for se in student_enrollments %}
+      <tr>
+        <td>{{se['student_enrollment_id']}}</td>
+        <td>{{se['student_id']}}</td>
+        <td>{{se['student_name']}}</td>
+        <td>{{se['course_id']}}</td>
+        <td>{{se['course_name']}}</td>
+        <td>{{se['course_start_date']}}</td>
+        <td>{{se['course_end_date']}}</td>
+        <td>{{se['is_enrolled']}}</td>
+        <td>{{se['certificate_id']}}</td>
+      </tr>
+    {% endfor %}
   </table>
   <p>&nbsp;</p>
   </div> <!-- browse -->

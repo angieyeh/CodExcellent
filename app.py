@@ -10,6 +10,10 @@ import app_config
 
 app = app_config.application()
 
+# Blueprints
+
+from applications.student_enrollments import controller
+app.register_blueprint(controller.student_enrollments_bp)
 
 # Routes
 
@@ -21,11 +25,6 @@ def root():
 @app.route('/students')
 def students():
     return render_template("students.j2", students=sample_students)
-
-
-@app.route('/student_enrollments')
-def student_enrollments():
-  return render_template("student_enrollments.j2")
 
 
 @app.route('/instructors')
