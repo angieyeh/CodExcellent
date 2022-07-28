@@ -4,10 +4,11 @@
 
 from flask import Flask, render_template
 import os
+import app_config
 
 # Configuration
 
-app = Flask(__name__)
+app = app_config.application()
 
 
 # Routes
