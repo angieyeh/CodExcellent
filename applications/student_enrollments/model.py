@@ -14,3 +14,11 @@ def get():
     cursor.execute(query)
     results = cursor.fetchall()
     return results
+
+
+def create(student_id, course_id):
+  with connection.cursor() as cursor:
+    query = f"INSERT INTO Student_Enrollments (student_id, course_id ) VALUES (%s, %s)"
+    cursor.execute(query, (int(student_id), int(course_id)))
+    connection.commit()
+    

@@ -5,8 +5,6 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <h1>Manage Student Enrollments</h1>
-
   <div id="browse">
   <table border="1" cellpadding="5">
     <tr>
@@ -37,12 +35,21 @@
   <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert">
-      <form method="POST">
+      <form action="/student_enrollments" method="POST">
           <legend><strong>Enroll Student</strong></legend>
             <fieldset class="fields">
-              <label>Student ID</label> <input type="text" name="student_id">  
-              <label>Course ID</label> <input type="text" name="course_id">  
+              <label>Student ID</label> <input type="number" name="student_id"  min="1" autocomplete="off">  
+              <label>Course ID</label> <input type="number" name="course_id" min="1" autocomplete="off">  
             </fieldset>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <div class="message_flash">{{ message }}</div>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
             <input class="btn" type="submit" value="Enroll">
             <input class="btn" type="button" value="Clear">
     </form> 
