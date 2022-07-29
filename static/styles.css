@@ -1,3 +1,9 @@
+/* Citation for the following HTML:
+  Date: 07/28/2022
+  Remove spinner when input type is number
+  Source URL: https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
+*/
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
