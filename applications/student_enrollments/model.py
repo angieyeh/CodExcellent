@@ -22,9 +22,9 @@ def create(student_id, course_id):
     connection.commit()
 
 
-def delete(id):
-  with mysql.cursor() as cursor:
+def delete(student_enrollment_id):
+  with connection.cursor() as cursor:
     query = """DELETE FROM Student_Enrollments 
             WHERE student_enrollment_id = '%s';"""
-    cursor.execute(query, (id))
-  mysql.commit()
+    cursor.execute(query, (int(student_enrollment_id)))
+  connection.commit()
