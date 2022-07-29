@@ -10,7 +10,7 @@ import app_config
 # Configuration
 
 app = app_config.application()
-
+app.secret_key = "super duper secret key"
 # Blueprints
 
 from applications.student_enrollments import controller
