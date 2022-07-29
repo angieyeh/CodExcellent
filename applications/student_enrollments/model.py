@@ -1,4 +1,5 @@
 from flask import redirect, request
+import pymysql
 import app_config
 import os
 

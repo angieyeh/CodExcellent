@@ -18,6 +18,7 @@
       <th>Is Enrolled</th>
       <th>Certificate ID</th>
       <th>Delete</th>
+      <th>Update</th>
     </tr>
     {% for se in student_enrollments %}
       <tr>
@@ -58,22 +59,6 @@
     </form> 
   </div><!-- insert -->
   <p>&nbsp;</p>
-<<<<<<< HEAD
-  <div id="update">
-      <form method="POST">
-          <legend><strong>Update Student Enrollment</strong></legend>
-            <fieldset class="fields">
-              <label>Student ID</label> <input type="text" name="student_id">  
-              <label>Course ID</label> <input type="text" name="course_id"> 
-              <label>Is Enrolled</label> <input type="text" name="is_enrolled"> 
-              <label>Certificate ID</label> <input type="text" name="certificate_id">
-            </fieldset>
-            <input class="btn" type="submit" value="Update">
-            <input class="btn" type="button" value="Clear">
-    </form> 
-  </div><!-- update -->
-  <p>&nbsp;</p>
-=======
   <div id="delete" style="display: block">
     <form method="POST">
         <legend><strong>Delete Student Enrollment</strong></legend>
@@ -87,5 +72,4 @@
       <input class="btn" type="button" value="Clear">
     </form> 
   </div><!-- delete -->
->>>>>>> Allow admins to update Student_Enrollments
 {% endblock table %}
