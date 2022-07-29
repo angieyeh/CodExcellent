@@ -1,6 +1,4 @@
-from flask import Flask
-
-from flask import request
+from flask import Flask, request
 import pymysql
 import pymysql.cursors
 import os
@@ -18,6 +16,6 @@ connection = pymysql.connect(host=os.environ.get('MYSQL_HOST'),
 def application():
   return app
 
-# mysql = MySQL(app)
+mysql = connection
 def db():
   return connection

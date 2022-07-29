@@ -24,3 +24,15 @@ def create():
     model.create(s_id, c_id)
   return redirect(url_for('student_enrollments_bp.index'))
   
+@student_enrollments_bp.delete('/student_enrollments')
+def index1():
+  if request.form.get('Delete_Enrollment'):
+    id = request.form['student_enrollment_id']
+    try:
+      results = model.delete(id)
+      print(results)
+      return render_template('student_enrollments.j2', student_enrollments=results)
+    except TemplateNotFound:
+      abort(404)
+
+

@@ -1,5 +1,4 @@
-import pymysql
-import pymysql.cursors
+from flask import redirect, request
 import app_config
 
 connection = app_config.db()
@@ -21,4 +20,11 @@ def create(student_id, course_id):
     query = f"INSERT INTO Student_Enrollments (student_id, course_id ) VALUES (%s, %s)"
     cursor.execute(query, (int(student_id), int(course_id)))
     connection.commit()
-    
+
+
+def delete(id):
+  with mysql.cursor() as cursor:
+    query = """DELETE FROM Student_Enrollments 
+            WHERE student_enrollment_id = '%s';"""
+    cursor.execute(query, (id))
+  mysql.commit()
