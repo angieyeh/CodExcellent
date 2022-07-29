@@ -31,6 +31,7 @@
         <td>{{se['is_enrolled']}}</td>
         <td>{{se['certificate_id']}}</td>
         <td><a href="student_enrollments/delete/{{se['student_enrollment_id']}}" class="btn btn-default">Delete</a></td>
+        <td><a href="student_enrollments/{{se['student_enrollment_id']}}">Update</a></td>
       </tr>
     {% endfor %}
   </table>
@@ -57,6 +58,7 @@
     </form> 
   </div><!-- insert -->
   <p>&nbsp;</p>
+<<<<<<< HEAD
   <div id="update">
       <form method="POST">
           <legend><strong>Update Student Enrollment</strong></legend>
@@ -71,4 +73,19 @@
     </form> 
   </div><!-- update -->
   <p>&nbsp;</p>
+=======
+  <div id="delete" style="display: block">
+    <form method="POST">
+        <legend><strong>Delete Student Enrollment</strong></legend>
+            <fieldset class="fields">
+            <p>Are you sure you wish to delete the following?</p>
+            <input type="hidden" name="student_enrollment_id" value="1">
+            <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
+              
+      </fieldset>
+      <input class="btn" type="submit" value="Delete">
+      <input class="btn" type="button" value="Clear">
+    </form> 
+  </div><!-- delete -->
+>>>>>>> Allow admins to update Student_Enrollments
 {% endblock table %}

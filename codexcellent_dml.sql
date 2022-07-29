@@ -45,7 +45,7 @@ SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.cou
 INSERT INTO Student_Enrollments (student_id, course_id ) VALUES 
 (:student_id_input, :course_id_input);
 -- update a student_enrollment's data based on submission of the Update Certificates form 
-UPDATE Student_Enrollment SET student_id = :student_id_input, course_id = :course_id_input, is_enrolled
+UPDATE Student_Enrollment SET is_enrolled
 = :is_enrolled_input, certificate_id = certificate_id_input
 	WHERE student_enrollment_id = :student_enrollment_id_input;
 -- update a student_enrollment_id's certificate_id nullable - [NULLABLE RELATIONSHIP]

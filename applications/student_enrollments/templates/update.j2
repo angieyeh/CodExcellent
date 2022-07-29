@@ -1,0 +1,21 @@
+
+{% extends "layout.j2" %}
+
+{% block table %}
+  <div id="update">
+      <form method="POST" action="/student_enrollments/edit/{{student_enrollment_id}}">
+          <legend><strong>Update Student Enrollment</strong></legend>
+            <fieldset class="fields">
+              <label>Is Enrolled</label>
+              <select name="is_enrolled" required>
+                <!-- these are hard coded, but you can add code to make this dynamic -->
+                  <option value="1">True</option>
+                  <option value="0">False</option>
+                </select>
+              <label>Certificate ID</label> <input type="number" name="certificate_id" min="1">
+            </fieldset>
+            <input class="btn" type="submit" value="Update">
+            <input class="btn" type="button" value="Clear">
+    </form> 
+  </div><!-- update -->
+{% endblock table %}
