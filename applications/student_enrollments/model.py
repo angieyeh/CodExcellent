@@ -48,12 +48,15 @@ def delete(student_enrollment_id):
 def update(student_enrollment_id, is_enrolled, certificate_id):
   connection = create_connection()
   with connection.cursor() as cursor:
+    query = "UPDATE Student_Enrollments SET is_enrolled = %s, certificate_id = %s WHERE student_enrollment_id = %s;"
     if certificate_id == '': 
-      query = f"UPDATE Student_Enrollments SET is_enrolled = %s WHERE student_enrollment_id = %s;"
-      cursor.execute(query, (int(is_enrolled), int(student_enrollment_id)))
+      query = "UPDATE Student_Enrollments SET is_enrolled = %s WHERE student_enrollment_id = %s;"
+      updated_vals = (int(is_enrolled), int(student_enrollment_id))
+    elif certificate_id.isalpha() and certificate_id.lower() == 'none' or certificate_id.lower() == 'null':
+      updated_vals = (int(is_enrolled), None, int(student_enrollment_id))
     else:
-      query = f"UPDATE Student_Enrollments SET is_enrolled = %s, certificate_id = %s WHERE student_enrollment_id = %s;"
-      cursor.execute(query, (int(is_enrolled), int(certificate_id), int(student_enrollment_id)))
+      updated_vals = (int(is_enrolled), int(certificate_id), int(student_enrollment_id))
+    cursor.execute(query, updated_vals)
     connection.commit()
     cursor.close()
     connection.close()
