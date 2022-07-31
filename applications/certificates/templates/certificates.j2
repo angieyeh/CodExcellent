@@ -1,0 +1,57 @@
+{#  Citation for the following HTML: 
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+{% extends "layout.j2" %}
+
+{% block table %}
+  <h1>Manage Certificates</h1>
+
+
+  <!-- browse -->
+  <div id="browse">
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Certificate ID</th>
+      <th>Student Name</th>
+      <th>Course Name</th>
+      <th>Certificate Title</th>
+      <th>Issue Date</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Chloe Decker</td>
+      <td>Intro to Programming</td>
+      <td>Certificate of Completion</td>
+      <td>2022-03-17</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Ella Lopez</td>
+      <td>Intro to HTML/CSS and Javascript</td>
+      <td>Certificate of Completion</td>
+      <td>2022-03-17</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Dan Espinoza</td>
+      <td>Intro to HTML/CSS and Javascript</td>
+      <td>Certificate of Completion</td>
+      <td>2022-03-17</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div id="insert">
+      <form method="POST">
+          <legend><strong>Add New Certificate</strong></legend>
+            <fieldset class="fields">
+              <label>Certificate Title</label> <input type="text" name="certificate_title">
+              <label>Issue Date</label> <input type="text" name="issue_date">  
+            </fieldset>
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
+    </form> 
+  </div>
+{% endblock table %}

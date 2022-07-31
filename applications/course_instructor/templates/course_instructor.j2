@@ -1,0 +1,66 @@
+{#  Citation for the following HTML:
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+{% extends "layout.j2" %}
+
+{% block table %}
+
+<div id="ci_browse">
+    <h1>Manage Course Instructors</h1>
+  <table border="1" cellpadding="5">
+      <thead>
+      <tr>
+          <th>Course ID</th>
+          <th>Course Name</th>
+          <th>Instructor ID</th>
+          <th>Instructor Name</th>
+          <th>Instructor Title</th>
+      </tr>
+      </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Intro to Programming</td>
+            <td>1</td>
+            <td>Charlotte Charles</td>
+            <td>Teacher</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Intro to Programming</td>
+            <td>4</td>
+            <td>Robin Scherbatsky</td>
+            <td>Teaching Assistant</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Database Design</td>
+            <td>2</td>
+            <td>Cosima Niehaus</td>
+            <td>Teacher</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Intro to Programming</td>
+            <td>3</td>
+            <td>Donny Hendrix</td>
+            <td>Teacher</td>
+        </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div id="ci_insert">
+      <form method="POST">
+          <legend><strong>Add New Course Instructor</strong></legend>
+            <fieldset class="fields">
+                <label>Course ID</label> <input type="number" name="course_id">
+                <label>Instructor ID</label> <input type="number" name="instructor_id">
+            </fieldset>
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
+    </form>
+  </div>
+{% endblock table %}

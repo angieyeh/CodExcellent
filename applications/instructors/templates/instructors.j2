@@ -1,0 +1,53 @@
+{#  Citation for the following HTML:
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+{% extends "layout.j2" %}
+
+{% block table %}
+  <h1>Manage Instructors</h1>
+
+<!-- browse -->
+  <div id="browse">
+  <table border="1" cellpadding="5">
+      <thead>
+      <tr>
+         <th>Instructor ID</th>
+         <th>Name</th>
+         <th>Email</th>
+         <th>Phone Number</th>
+          <th>Instructor Title</th>
+         <th>Pronoun</th>
+      </tr>
+      </thead>
+    <tbody>
+    {% for instructor in instructors %}
+        <tr>
+            <td>{{instructor['instructor_id']}}</td>
+            <td>{{instructor['name']}}</td>
+            <td>{{instructor['email']}}</td>
+            <td>{{instructor['phone_number']}}</td>
+            <td>{{instructor['instructor_title']}}</td>
+            <td>{{instructor['pronoun']}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div id="insert">
+      <form method="POST">
+          <legend><strong>Add New Instructor</strong></legend>
+            <fieldset class="fields">
+                <label>Name</label> <input type="text" name="instructor_name">
+                <label>Email</label> <input type="text" name="instructor_email">
+                <label>Phone Number</label> <input type="text" name="instructor_phone_number">
+                <label>Instructor Title</label> <input type="text" name="instructor_title">
+                <label>Pronoun</label> <input type="text" name="instructor_pronoun">
+            </fieldset>
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
+    </form>
+  </div>
+{% endblock table %}

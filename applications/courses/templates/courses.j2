@@ -1,0 +1,78 @@
+{#  Citation for the following HTML:
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+{% extends "layout.j2" %}
+
+{% block table %}
+  <h1>Manage Courses</h1>
+
+<!-- browse -->
+  <div id="browse">
+  <table border="1" cellpadding="5">
+      <thead>
+      <tr>
+        <th>Course ID</th>
+        <th>Course name</th>
+        <th>Level</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+          <th>Status</th>
+      </tr>
+      </thead>
+    <tbody>
+    {% for course in courses %}
+        <tr>
+            <td>{{course['course_id']}}</td>
+            <td>{{course['course_name']}}</td>
+            <td>{{course['level']}}</td>
+            <td>{{course['start_date']}}</td>
+            <td>{{course['end_date']}}</td>
+            <td>{{course['status']}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div>
+      <form id="insert" method="POST">
+          <legend><strong>Add Course</strong></legend>
+          <fieldset class="fields">
+              <label>Course name</label> <input type="text" name="course_name">
+              <label for="level">Level</label>
+                  <select name="level" id="level">
+                      <option value="beginner">beginner</option>
+                      <option value="intermediate">intermediate</option>
+                  </select>
+              <label>Start Date</label> <input type="date" name="course_start_date">
+              <label>End Date</label> <input type="date" name="course_end_date">
+              <label>Status</label>
+              <select name="status" id="status">
+                  <option value="1">active</option>
+                  <option value="0">cancelled</option>
+              </select>
+          </fieldset>
+          <input class="btn" type="submit" value="Add">
+          <input class="btn" type="button" value="Clear">
+    </form>
+  </div>
+
+  <div>
+    <form id="search"method="POST">
+      <legend>
+          <strong>Search Course By Name</strong>
+      </legend>
+      <select name="status" id="status">
+          <option value="intro_programming">Intro to Programming</option>
+          <option value="intro_html_css_js">Intro to HTML/CSS and Javascript</option>
+          <option value="intro_python">Intro to Python</option>
+          <option value="database_design">Database Design</option>
+          <option value="data_structures">Data Structures</option>
+          <option value="web_development">Web Development</option>
+      </select>
+      <input class="btn" type="submit" value="Search">
+    </form>
+  </div>
+{% endblock table %}

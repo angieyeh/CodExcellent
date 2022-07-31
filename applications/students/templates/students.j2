@@ -1,0 +1,66 @@
+{#  Citation for the following HTML:
+    Date: 07/18/2022
+    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+
+{% extends "layout.j2" %}
+
+{% block table %}
+  <h1>Manage Students</h1>
+
+<!-- browse -->
+  <div id="browse">
+  <table border="1" cellpadding="5">
+      <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Pronoun</th>
+      </tr>
+      </thead>
+    <tbody>
+    {% for student in students %}
+        <tr>
+            <td>{{student['student_id']}}</td>
+            <td>{{student['name']}}</td>
+            <td>{{student['email']}}</td>
+            <td>{{student['phone_number']}}</td>
+            <td>{{student['pronoun']}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  </div>
+  <!-- insert -->
+  <div id="insert">
+      <form method="POST">
+          <legend><strong>Add New Student</strong></legend>
+            <fieldset class="fields">
+              <label>Full Name</label> <input type="text" name="student_name">
+              <label>Email</label> <input type="text" name="student_email">
+              <label>Phone Number</label> <input type="text" name="student_phone_number">
+              <label>Pronoun</label> <input type="text" name="student_pronoun">
+            </fieldset>
+            <input class="btn" type="submit" value="Add">
+            <input class="btn" type="button" value="Clear">
+    </form>
+  </div>
+  <p>&nbsp;</p>
+  <!-- update -->
+  <div id="update">
+      <form method="PUT">
+          <legend><strong>Update Existing Student Information</strong></legend>
+            <fieldset class="fields">
+              <label>Student ID</label> <input type="text" name="student_id">
+              <label>Full Name</label> <input type="text" name="student_name">
+              <label>Email</label> <input type="text" name="student_email">
+              <label>Phone Number</label> <input type="text" name="student_phone_number">
+              <label>Pronoun</label> <input type="text" name="student_pronoun">
+            </fieldset>
+            <input class="btn" type="submit" value="Update">
+            <input class="btn" type="button" value="Clear">
+    </form>
+  </div>
+{% endblock table %}
