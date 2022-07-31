@@ -28,7 +28,7 @@ def get():
 def create(student_id, course_id):
   connection = create_connection()
   with connection.cursor() as cursor:
-    query = f"INSERT INTO Student_Enrollments (student_id, course_id ) VALUES (%s, %s)"
+    query = "INSERT INTO Student_Enrollments (student_id, course_id ) VALUES (%s, %s)"
     cursor.execute(query, (int(student_id), int(course_id)))
     connection.commit()
     connection.close()
@@ -38,7 +38,7 @@ def delete(student_enrollment_id):
   connection = create_connection()
   with connection.cursor() as cursor:
     query = """DELETE FROM Student_Enrollments 
-            WHERE student_enrollment_id = '%s';"""
+                WHERE student_enrollment_id = %s;"""
     cursor.execute(query, (int(student_enrollment_id)))
     connection.commit()
     cursor.close()
@@ -48,7 +48,9 @@ def delete(student_enrollment_id):
 def update(student_enrollment_id, is_enrolled, certificate_id):
   connection = create_connection()
   with connection.cursor() as cursor:
-    query = "UPDATE Student_Enrollments SET is_enrolled = %s, certificate_id = %s WHERE student_enrollment_id = %s;"
+    query = """UPDATE Student_Enrollments 
+                SET is_enrolled = %s, certificate_id = %s
+                WHERE student_enrollment_id = %s;"""
     if certificate_id == '': 
       query = "UPDATE Student_Enrollments SET is_enrolled = %s WHERE student_enrollment_id = %s;"
       updated_vals = (int(is_enrolled), int(student_enrollment_id))
