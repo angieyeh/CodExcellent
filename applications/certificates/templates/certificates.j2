@@ -7,7 +7,6 @@
 {% block table %}
   <h1>Manage Certificates</h1>
 
-
   <!-- browse -->
   <div id="browse">
   <table border="1" cellpadding="5">
@@ -18,38 +17,37 @@
       <th>Certificate Title</th>
       <th>Issue Date</th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Chloe Decker</td>
-      <td>Intro to Programming</td>
-      <td>Certificate of Completion</td>
-      <td>2022-03-17</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Ella Lopez</td>
-      <td>Intro to HTML/CSS and Javascript</td>
-      <td>Certificate of Completion</td>
-      <td>2022-03-17</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Dan Espinoza</td>
-      <td>Intro to HTML/CSS and Javascript</td>
-      <td>Certificate of Completion</td>
-      <td>2022-03-17</td>
-    </tr>
+    <tbody>
+    {% for cert in certificates %}
+      <tr>
+        <td>{{cert['certificate_id']}}</td>
+        <td>{{cert['student_name']}}</td>
+        <td>{{cert['course_name']}}</td>
+        <td>{{cert['certificate_title']}}</td>
+        <td>{{cert['issue_date']}}</td>
+      </tr>
+    {% endfor %}
+    <tbody>
   </table>
   <p>&nbsp;</p>
   </div>
   <!-- insert -->
   <div id="insert">
-      <form method="POST">
+      <form action="/certificates" method="POST">
           <legend><strong>Add New Certificate</strong></legend>
             <fieldset class="fields">
               <label>Certificate Title</label> <input type="text" name="certificate_title">
-              <label>Issue Date</label> <input type="text" name="issue_date">  
+              <label>Issue Date</label> <input type="date" name="issue_date">  
             </fieldset>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <div class="message_flash">{{ message }}</div>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
             <input class="btn" type="submit" value="Add">
             <input class="btn" type="button" value="Clear">
     </form> 

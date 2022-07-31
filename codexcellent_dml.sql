@@ -4,9 +4,7 @@ SELECT student_id , name, email, phone_number, pronoun FROM Students;
 -- add a new Student
 INSERT INTO Students (name, email, phone_number, pronoun) VALUES 
 (:name_input, :email_input, :phone_number_input, :pronoun_input);
--- update a student's data based on submission of the Update Student form 
-UPDATE Students SET name = :name_input, email = :email_input, phone_number = phone_number_input, pronoun = :pronoun_input WHERE 
-student_id = :student_id_from_the_update_form;
+
 
 ---------------INSTRUCTORS---------------
 -- get all instructor_ids, names, emails, phone_numbers, instructor_titles, pronouns to populate the Instructors UI

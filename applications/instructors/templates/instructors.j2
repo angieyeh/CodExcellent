@@ -37,15 +37,24 @@
   </div>
   <!-- insert -->
   <div id="insert">
-      <form method="POST">
+      <form action="/instructors" method="POST">
           <legend><strong>Add New Instructor</strong></legend>
             <fieldset class="fields">
-                <label>Name</label> <input type="text" name="instructor_name">
-                <label>Email</label> <input type="text" name="instructor_email">
-                <label>Phone Number</label> <input type="text" name="instructor_phone_number">
+                <label>Name</label> <input type="text" name="name">
+                <label>Email</label> <input type="text" name="email">
+                <label>Phone Number</label> <input type="number" name="phone_number">
                 <label>Instructor Title</label> <input type="text" name="instructor_title">
-                <label>Pronoun</label> <input type="text" name="instructor_pronoun">
+                <label>Pronoun</label> <input type="text" name="pronoun">
             </fieldset>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <div class="message_flash">{{ message }}</div>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
             <input class="btn" type="submit" value="Add">
             <input class="btn" type="button" value="Clear">
     </form>
