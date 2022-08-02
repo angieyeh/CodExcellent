@@ -81,25 +81,6 @@
             <input class="btn" type="submit" value="Enroll">
             <input class="btn" type="button" value="Clear">
     </form> 
-  </div><!-- insert -->
-  <p>&nbsp;</p>
-  <div id="delete" style="display: block">
-    <form method="POST">
-        <legend><strong>Delete Student Enrollment</strong></legend>
-            <fieldset class="fields">
-            <p>Are you sure you wish to delete the following?</p>
-            <input type="hidden" name="student_enrollment_id" value="1">
-            <label>Student Enrollment ID</label> <input type="text" name="student_enrollment_id">  
-              
-      </fieldset>
-      <input class="btn" type="submit" value="Delete">
-      <input class="btn" type="button" value="Clear">
-    </form> 
-    
   </div>
-  
-  <!-- {% block javascript %}
-      <script src="{{ url_for('.static', filename="studentEnrollments.js") }}">console.log('stud enroll')</script>
-  {% endblock %} -->
 {% endblock table %}
 
