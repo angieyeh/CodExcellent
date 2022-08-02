@@ -21,9 +21,9 @@ def get():
   with connection.cursor() as cursor:
     cursor.execute(query)
     results = cursor.fetchall()
-    return results
     cursor.close()
     connection.close()
+    return results
 
 
 def create(certificate_title, issue_date):
