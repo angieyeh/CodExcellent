@@ -3,7 +3,7 @@ import pymysql
 import pymysql.cursors
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 
 # Connect to the database

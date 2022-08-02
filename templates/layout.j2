@@ -5,59 +5,64 @@
     Source URL: https://getbootstrap.com/docs/5.2/getting-started/introduction/ #}
 
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- CSS -->
-    <link rel="stylesheet" href="static/styles.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script>console.log('jqeur1')</script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/styles.css">
 
-</head>
-<body>
-    <!--Navbar py-4 -->
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="/">CodExcellent</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle"
-                        aria-controls="navbarToggle" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav ms-auto">
-                        <a class="nav-item nav-link" href="/students">Students</a>
-                        <a class="nav-item nav-link" href="/student_enrollments">Student Enrollments</a>
-                        <a class="nav-item nav-link" href="/instructors">Instructors</a>
-                        <a class="nav-item nav-link" href="/courses">Courses</a>
-                        <a class="nav-item nav-link" href="course_instructor">Course Instructors</a>
-                        <a class="nav-item nav-link" href="/certificates">Certificates</a>
+    </head>
+    <body>
+        <!--Navbar py-4 -->
+        <header class="site-header">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="/">CodExcellent</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle"
+                            aria-controls="navbarToggle" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <div class="navbar-nav ms-auto">
+                            <a class="nav-item nav-link" href="/students">Students</a>
+                            <a class="nav-item nav-link" href="/student_enrollments">Student Enrollments</a>
+                            <a class="nav-item nav-link" href="/instructors">Instructors</a>
+                            <a class="nav-item nav-link" href="/courses">Courses</a>
+                            <a class="nav-item nav-link" href="course_instructor">Course Instructors</a>
+                            <a class="nav-item nav-link" href="/certificates">Certificates</a>
+                        </div>
                     </div>
                 </div>
+            </nav>
+        </header>
+
+        <section class="p-2 p-lg-0 pt-lg-5 ">
+            <div class="container">
+                {% block table %}{% endblock %}
             </div>
-        </nav>
-    </header>
+        </section>
 
-    <section class="p-2 p-lg-0 pt-lg-5 ">
-        <div class="container">
-            {% block table %}{% endblock %}
-        </div>
-    </section>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-</body>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script>console.log('jqeur')</script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        {% block javascript %}
+            <script src="{{ url_for('.static', filename="studentEnrollments.js") }}">console.log('stud enroll')</script>
+        {% endblock %}
+    </body>
 
 </html>

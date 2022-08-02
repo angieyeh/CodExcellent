@@ -4,9 +4,14 @@
 
 {% extends "layout.j2" %}
 
+{% with modal_title=modal_title, modal_body=modal_body, button_action='Delete', classes='btn-delete' %}
+  {% include "components/_modal.j2" %}
+{% endwith %}
+
+
 {% block table %}
-  <div id="browse">
-  <table border="1" cellpadding="5">
+  <div>
+  <table id="browse" border="1" cellpadding="5">
     <tr>
       <th>Student Enrollment ID</th>
       <th>Student ID</th>
@@ -17,11 +22,11 @@
       <th>Course End Date</th>
       <th>Is Enrolled</th>
       <th>Certificate ID</th>
-      <th>Delete</th>
       <th>Update</th>
+      <th>Delete</th>
     </tr>
     {% for se in student_enrollments %}
-      <tr>
+      <tr data-student-enrollment-id="{{se['student_enrollment_id']}}">
         <td>{{se['student_enrollment_id']}}</td>
         <td>{{se['student_id']}}</td>
         <td>{{se['student_name']}}</td>
@@ -31,8 +36,14 @@
         <td>{{se['course_end_date']}}</td>
         <td>{{se['is_enrolled']}}</td>
         <td>{{se['certificate_id']}}</td>
-        <td><a href="student_enrollments/delete/{{se['student_enrollment_id']}}" class="btn btn-default">Delete</a></td>
         <td><a href="student_enrollments/{{se['student_enrollment_id']}}">Update</a></td>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger btn-modal-delete" data-toggle="modal" data-target="#modal" data-student-enrollment-id="{{se['student_enrollment_id']}}">
+            Delete
+          </button>
+        </td>
+        
       </tr>
     {% endfor %}
   </table>
@@ -71,5 +82,11 @@
       <input class="btn" type="submit" value="Delete">
       <input class="btn" type="button" value="Clear">
     </form> 
-  </div><!-- delete -->
+    
+  </div>
+  
+  <!-- {% block javascript %}
+      <script src="{{ url_for('.static', filename="studentEnrollments.js") }}">console.log('stud enroll')</script>
+  {% endblock %} -->
 {% endblock table %}
+

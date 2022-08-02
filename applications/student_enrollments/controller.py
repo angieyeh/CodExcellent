@@ -8,13 +8,23 @@ from applications.student_enrollments import model
   Flask Blueprints
   Source URL: https://hackersandslackers.com/flask-blueprints
 """
-student_enrollments_bp = Blueprint('student_enrollments_bp', __name__, template_folder='templates')
+student_enrollments_bp = Blueprint(
+                          'student_enrollments_bp', 
+                          __name__, 
+                          template_folder='templates',
+                          static_folder='static',
+                          static_url_path='/applications/student_enrollments/static'
+                        )
 
 @student_enrollments_bp.get('/student_enrollments')
 def index():
   try:
     results = model.get()
-    return render_template('student_enrollments.j2', student_enrollments=results)
+    return render_template(
+            'student_enrollments.j2', 
+            student_enrollments=results,
+            modal_title='Student Enrollments',
+            modal_body='Are you sure you want to delete this student enrollment?')
   except TemplateNotFound:
     abort(404)
 
@@ -27,12 +37,6 @@ def new():
     flash("Please provide valid Student ID and Course ID.")
   else:
     model.create(s_id, c_id)
-  return redirect(url_for('student_enrollments_bp.index'))
-  
-
-@student_enrollments_bp.post("/student_enrollments/delete/<int:student_enrollment_id>")
-def delete(student_enrollment_id):
-  model.delete(student_enrollment_id)
   return redirect(url_for('student_enrollments_bp.index'))
 
 
@@ -52,3 +56,10 @@ def update(student_enrollment_id):
   else:
     model.update(student_enrollment_id, is_enrolled, certificate_id)
   return redirect(url_for('student_enrollments_bp.index'))
+
+
+@student_enrollments_bp.delete("/student_enrollments/<int:student_enrollment_id>")
+def delete(student_enrollment_id):
+  print(student_enrollment_id)
+  model.delete(student_enrollment_id)
+  return {student_enrollment_id: student_enrollment_id}
