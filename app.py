@@ -4,11 +4,10 @@
 
 from flask import Flask, render_template
 import os
-import app_config
 
 # Configuration
 
-app = app_config.application()
+app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = "super duper secret key"
 
 # Blueprints

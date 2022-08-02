@@ -1,6 +1,5 @@
 from datetime import datetime
 import pymysql
-import app_config
 import os
 from datetime import datetime
 

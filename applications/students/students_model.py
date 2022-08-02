@@ -1,5 +1,4 @@
 import pymysql
-import app_config
 import os
 
 def create_connection():
