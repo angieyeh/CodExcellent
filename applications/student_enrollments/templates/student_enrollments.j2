@@ -53,8 +53,21 @@
       <form action="/student_enrollments" method="POST">
           <legend><strong>Enroll Student</strong></legend>
             <fieldset class="fields">
-              <label>Student ID</label> <input type="number" name="student_id"  min="1" autocomplete="off">  
-              <label>Course ID</label> <input type="number" name="course_id" min="1" autocomplete="off">  
+              <label>Student ID</label> 
+              <select name="student_id">
+                {% for s in students %}
+                  <option value="{{s.student_id}}">{{s.student_id}}: {{s.name}}</option>
+                {% endfor %}
+              </select>
+              
+              <label>Course ID</label> 
+              <select name="course_id">
+                {% for c in courses %}
+                  <option value="{{c.course_id}}">
+                    {{c.course_id}}: {{c.course_name}}, {{c.start_date}} - {{c.end_date}}
+                  </option>
+                {% endfor %}
+              </select> 
             </fieldset>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
