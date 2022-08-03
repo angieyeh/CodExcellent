@@ -24,18 +24,15 @@ app.register_blueprint(instructors_controller.instructors_bp)
 from applications.certificates import certificates_controller
 app.register_blueprint(certificates_controller.certificates_bp)
 
+from applications.courses import courses_controller
+app.register_blueprint(courses_controller.courses_bp)
+
 
 # Routes
 
 @app.route('/')
 def root():
     return render_template("main.j2")
-
-
-@app.route('/courses')
-def courses():
-    return render_template("courses.j2")
-
 
 @app.route('/course_instructor')
 def course_instructor():

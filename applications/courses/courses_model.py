@@ -30,3 +30,24 @@ def find_by(property, value):
     cursor.close()
     connection.close()
     return results
+
+
+def create(course_name, level, start_date, end_date, status):
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    query = f"INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES (%s, %s, %s, %s, %s);"
+    cursor.execute(query, (str(course_name), str(level), str(start_date), str(end_date), int(status)))
+    connection.commit()
+    connection.close()
+
+
+def search(course_name):
+  query = f"SELECT course_id, course_name, level, start_date, end_date, status FROM Courses WHERE course_name = %s;"
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query, str(course_name))
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
