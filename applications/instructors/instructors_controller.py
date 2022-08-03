@@ -30,8 +30,6 @@ def new():
         flash("Please provide valid name.")
     if not email:
         flash("Please provide valid email.")
-    if not phone_number.isnumeric():
-        flash("Please provide valid phone number.")
     else:
         instructors_model.create(name, email, phone_number, instructor_title, pronoun)
     return redirect(url_for('instructors_bp.index'))

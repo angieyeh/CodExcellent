@@ -23,7 +23,17 @@ def get():
 def create(name, email, phone_number, instructor_title, pronoun):
   connection = create_connection()
   with connection.cursor() as cursor:
-    query = f"INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) VALUES (%s, %s, %s, %s, %s)"
-    cursor.execute(query, (str(name), str(email), int(phone_number), str(instructor_title), str(pronoun)))
+    if pronoun == '' and phone_number == '':
+        query = f"INSERT INTO Instructors (name, email, instructor_title) VALUES (%s, %s, %s)"
+        cursor.execute(query, (str(name), str(email), str(instructor_title)))
+    elif pronoun == '':
+        query = f"INSERT INTO Instructors (name, email, phone_number, instructor_title) VALUES (%s, %s, %s, %s)"
+        cursor.execute(query, (str(name), str(email), int(phone_number), str(instructor_title)))
+    elif phone_number == '':
+        query = f"INSERT INTO Instructors (name, email, instructor_title, pronoun) VALUES (%s, %s, %s, %s)"
+        cursor.execute(query, (str(name), str(email), str(instructor_title), str(pronoun)))
+    else:
+        query = f"INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(query, (str(name), str(email), int(phone_number), str(instructor_title), str(pronoun)))
     connection.commit()
     connection.close()

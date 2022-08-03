@@ -40,11 +40,22 @@
       <form action="/instructors" method="POST">
           <legend><strong>Add New Instructor</strong></legend>
             <fieldset class="fields">
-                <label>Name</label> <input type="text" name="name">
-                <label>Email</label> <input type="text" name="email">
+                <label>Name</label> <input type="text" name="name" required>
+                <label>Email</label> <input type="text" name="email" required>
                 <label>Phone Number</label> <input type="number" name="phone_number">
-                <label>Instructor Title</label> <input type="text" name="instructor_title">
-                <label>Pronoun</label> <input type="text" name="pronoun">
+                <label for="instructor_title">Instructor Title</label>
+                    <select name="instructor_title" id="instructor_title">
+                        <option value="Teacher">Teacher</option>
+                        <option value="Teaching Assistant">Teaching Assistant</option>
+                        <option value="Mentor">Mentor</option>
+                    </select>
+                <label for="pronoun">Pronoun</label>
+                    <select name="pronoun" id="pronoun">
+                        <option value="">None</option>
+                        <option value="She/her/her">She/her/her</option>
+                        <option value="He/him/his">He/him/his</option>
+                        <option value="They/them/their">They/them/their</option>
+                    </select>
             </fieldset>
             {% with messages = get_flashed_messages() %}
               {% if messages %}

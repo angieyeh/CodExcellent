@@ -41,7 +41,13 @@
               <label>Full Name</label> <input type="text" name="name" required>
               <label>Email</label> <input type="text" name="email" >
               <label>Phone Number</label> <input type="number" name="phone_number">
-              <label>Pronoun</label><input type="text" name="pronoun">
+              <label for="pronoun">Pronoun</label>
+                <select name="pronoun" id="pronoun">
+                    <option value="">None</option>
+                    <option value="She/her/her">She/her/her</option>
+                    <option value="He/him/his">He/him/his</option>
+                    <option value="They/them/their">They/them/their</option>
+                </select>
             </fieldset>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
