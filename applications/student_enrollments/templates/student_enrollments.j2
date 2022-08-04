@@ -13,29 +13,17 @@
   <div>
   <table id="browse" border="1" cellpadding="5">
     <tr>
-      <th>Student Enrollment ID</th>
-      <th>Student ID</th>
-      <th>Student Name</th>
-      <th>Course ID</th>
-      <th>Course Name</th>
-      <th>Course Start Date</th>
-      <th>Course End Date</th>
-      <th>Is Enrolled</th>
-      <th>Certificate ID</th>
+      {% for key in student_enrollments[0].keys() %}
+        <th>{{ key }}</th>
+      {% endfor %}
       <th>Update</th>
       <th>Delete</th>
     </tr>
     {% for se in student_enrollments %}
       <tr data-student-enrollment-id="{{se['student_enrollment_id']}}">
-        <td>{{se['student_enrollment_id']}}</td>
-        <td>{{se['student_id']}}</td>
-        <td>{{se['student_name']}}</td>
-        <td>{{se['course_id']}}</td>
-        <td>{{se['course_name']}}</td>
-        <td>{{se['course_start_date']}}</td>
-        <td>{{se['course_end_date']}}</td>
-        <td>{{se['is_enrolled']}}</td>
-        <td>{{se['certificate_id']}}</td>
+        {% for key in se.keys() %}
+          <td>{{se[key]}}</td>
+        {% endfor %}
         <td><a href="student_enrollments/{{se['student_enrollment_id']}}">Update</a></td>
         <td>
           <!-- Button trigger modal -->

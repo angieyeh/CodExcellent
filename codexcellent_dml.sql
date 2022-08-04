@@ -60,4 +60,4 @@ JOIN Courses ON Course_Instructors.course_id = Courses.course_id
 JOIN Instructors ON Course_Instructors.instructor_id = Instructors.instructor_id;
 -- associate a course with a instructor (M-to-M relationship addition)
 INSERT INTO Course_Instructors (course_id, instructor_id) VALUES
-(:course_id_input, :instructor_id_input);
+(:course_id_input_from_dropdown, :instructor_id_input_from_dropdown);

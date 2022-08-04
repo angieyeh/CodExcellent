@@ -11,20 +11,16 @@
   <div id="browse">
   <table border="1" cellpadding="5">
     <tr>
-      <th>Certificate ID</th>
-      <th>Student Name</th>
-      <th>Course Name</th>
-      <th>Certificate Title</th>
-      <th>Issue Date</th>
+      {% for key in certificates[0].keys() %}
+        <th>{{ key }}</th>
+      {% endfor %}
     </tr>
     <tbody>
     {% for cert in certificates %}
       <tr>
-        <td>{{cert['certificate_id']}}</td>
-        <td>{{cert['student_name']}}</td>
-        <td>{{cert['course_name']}}</td>
-        <td>{{cert['certificate_title']}}</td>
-        <td>{{cert['issue_date']}}</td>
+        {% for key in cert.keys() %}
+          <td>{{cert[key]}}</td>
+        {% endfor %}
       </tr>
     {% endfor %}
     <tbody>

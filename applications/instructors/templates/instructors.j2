@@ -9,31 +9,24 @@
 
 <!-- browse -->
   <div id="browse">
-  <table border="1" cellpadding="5">
+    <table border="1" cellpadding="5">
       <thead>
       <tr>
-         <th>Instructor ID</th>
-         <th>Name</th>
-         <th>Email</th>
-         <th>Phone Number</th>
-          <th>Instructor Title</th>
-         <th>Pronoun</th>
+          {% for key in instructors[0].keys() %}
+            <th>{{ key }}</th>
+          {% endfor %}
       </tr>
       </thead>
     <tbody>
     {% for instructor in instructors %}
         <tr>
-            <td>{{instructor['instructor_id']}}</td>
-            <td>{{instructor['name']}}</td>
-            <td>{{instructor['email']}}</td>
-            <td>{{instructor['phone_number']}}</td>
-            <td>{{instructor['instructor_title']}}</td>
-            <td>{{instructor['pronoun']}}</td>
+            {% for key in instructor.keys() %}
+                <td>{{instructor[key]}}</td>
+            {% endfor %}
         </tr>
     {% endfor %}
     </tbody>
-  </table>
-  <p>&nbsp;</p>
+    </table>
   </div>
   <!-- insert -->
   <div id="insert">
@@ -41,7 +34,7 @@
           <legend><strong>Add New Instructor</strong></legend>
             <fieldset class="fields">
                 <label>Name</label> <input type="text" name="name" required>
-                <label>Email</label> <input type="text" name="email" required>
+                <label>Email</label> <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                 <label>Phone Number</label> <input type="number" name="phone_number">
                 <label for="instructor_title">Instructor Title</label>
                     <select name="instructor_title" id="instructor_title">

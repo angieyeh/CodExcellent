@@ -27,6 +27,7 @@ def search():
         flash("Courses Not Found")
     return render_template('courses.j2', courses=results)
 
+
 @courses_bp.post('/courses')
 def new():
     course_name = request.form.get('course_name')

@@ -18,6 +18,7 @@ student_enrollments_bp = Blueprint(
                           static_url_path='/applications/student_enrollments/static'
                         )
 
+
 @student_enrollments_bp.get('/student_enrollments')
 def index():
   try:

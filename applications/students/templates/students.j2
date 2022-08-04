@@ -11,22 +11,18 @@
   <div id="browse">
   <table border="1" cellpadding="5">
       <thead>
-      <tr>
-        <th>Student ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>Pronoun</th>
-      </tr>
+        <tr>
+          {% for key in students[0].keys() %}
+            <th>{{ key }}</th>
+          {% endfor %}
+        </tr>
       </thead>
     <tbody>
     {% for student in students %}
         <tr>
-            <td>{{student['student_id']}}</td>
-            <td>{{student['name']}}</td>
-            <td>{{student['email']}}</td>
-            <td>{{student['phone_number']}}</td>
-            <td>{{student['pronoun']}}</td>
+            {% for key in student.keys() %}
+                <td>{{student[key]}}</td>
+            {% endfor %}
         </tr>
     {% endfor %}
     </tbody>
@@ -39,7 +35,7 @@
           <legend><strong>Add New Student</strong></legend>
             <fieldset class="fields">
               <label>Full Name</label> <input type="text" name="name" required>
-              <label>Email</label> <input type="text" name="email" >
+              <label>Email</label> <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
               <label>Phone Number</label> <input type="number" name="phone_number">
               <label for="pronoun">Pronoun</label>
                 <select name="pronoun" id="pronoun">

@@ -27,16 +27,14 @@ app.register_blueprint(certificates_controller.certificates_bp)
 from applications.courses import courses_controller
 app.register_blueprint(courses_controller.courses_bp)
 
+from applications.course_instructor import course_instructor_controller
+app.register_blueprint(course_instructor_controller.course_instructor_bp)
 
-# Routes
 
+# HomePage
 @app.route('/')
 def root():
     return render_template("main.j2")
-
-@app.route('/course_instructor')
-def course_instructor():
-    return render_template("course_instructor.j2")
 
 
 # Listener

@@ -8,6 +8,7 @@ def create_connection():
                             database=os.environ.get('MYSQL_DB'),
                             cursorclass=pymysql.cursors.DictCursor)
 
+
 def get(active=None):
   query = "SELECT course_id, course_name, level, start_date, end_date, status FROM Courses;"
 

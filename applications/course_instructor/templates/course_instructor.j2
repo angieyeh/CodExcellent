@@ -5,59 +5,44 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-
-<div id="ci_browse">
     <h1>Manage Course Instructors</h1>
-  <table border="1" cellpadding="5">
-      <thead>
-      <tr>
-          <th>Course ID</th>
-          <th>Course Name</th>
-          <th>Instructor ID</th>
-          <th>Instructor Name</th>
-          <th>Instructor Title</th>
-      </tr>
-      </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Intro to Programming</td>
-            <td>1</td>
-            <td>Charlotte Charles</td>
-            <td>Teacher</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Intro to Programming</td>
-            <td>4</td>
-            <td>Robin Scherbatsky</td>
-            <td>Teaching Assistant</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Database Design</td>
-            <td>2</td>
-            <td>Cosima Niehaus</td>
-            <td>Teacher</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Intro to Programming</td>
-            <td>3</td>
-            <td>Donny Hendrix</td>
-            <td>Teacher</td>
-        </tr>
-    </tbody>
-  </table>
-  <p>&nbsp;</p>
-  </div>
+    <div id="ci_browse">
+      <table border="1" cellpadding="5">
+          <thead>
+            <tr>
+              {% for key in course_instructor[0].keys() %}
+                <th>{{ key }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+        <tbody>
+        {% for item in course_instructor %}
+            <tr>
+                {% for key in item.keys() %}
+                    <td>{{item[key]}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
   <!-- insert -->
   <div id="ci_insert">
-      <form method="POST">
+      <form action="/course_instructor" method="POST">
           <legend><strong>Add New Course Instructor</strong></legend>
             <fieldset class="fields">
-                <label>Course ID</label> <input type="number" name="course_id">
-                <label>Instructor ID</label> <input type="number" name="instructor_id">
+                <label>Course ID </label>
+                <select name="course_id">
+                    {% for c in courses %}
+                        <option value="{{c.course_id}}">{{c.course_id}}: {{c.course_name}}, {{c.start_date}} - {{c.end_date}}</option>
+                    {% endfor %}
+                </select>
+                <label>Instructor ID </label>
+                <select name="instructor_id">
+                    {% for i in instructors %}
+                        <option value="{{i.instructor_id}}">{{i.instructor_id}}: {{i.name}}</option>
+                    {% endfor %}
+                </select>
             </fieldset>
             <input class="btn" type="submit" value="Add">
             <input class="btn" type="button" value="Clear">
