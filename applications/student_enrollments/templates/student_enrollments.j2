@@ -4,7 +4,7 @@
 
 {% extends "layout.j2" %}
 
-{% with modal_title=modal_title, modal_body=modal_body, button_action='Delete', classes='btn-delete' %}
+{% with modal_title=modal_title %}
   {% include "components/_modal.j2" %}
 {% endwith %}
 
@@ -24,14 +24,15 @@
         {% for key in se.keys() %}
           <td>{{se[key]}}</td>
         {% endfor %}
-        <td><a href="student_enrollments/{{se['student_enrollment_id']}}">Update</a></td>
+        <td>
+          <button class="btn btn-secondary btn-update" type="submit" data-student-enrollment-id="{{se['student_enrollment_id']}}">Update</button>
+        </td>
         <td>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-danger btn-modal-delete" data-toggle="modal" data-target="#modal" data-student-enrollment-id="{{se['student_enrollment_id']}}">
             Delete
           </button>
         </td>
-        
       </tr>
     {% endfor %}
   </table>

@@ -2,20 +2,67 @@
 {% extends "layout.j2" %}
 
 {% block table %}
-  <div id="update">
-      <form method="POST" action="/student_enrollments/edit/{{student_enrollment_id}}">
+  <div>
+      <form id="update" action="/student_enrollments/{{student_enrollment.student_enrollment_id}}" method="POST">
           <legend><strong>Update Student Enrollment</strong></legend>
             <fieldset class="fields">
+              <input type="hidden" value="{{student_enrollment.student_enrollment_id}}" class="form-control" id="student_enrollment_id" name="student_enrollment_id" required>
+              <label>Student Enrollment ID {{student_enrollment.student_enrollment_id}}:</label>
+              <label>Student ID</label>
+                <select name="student_id" required>
+                  <!-- https://stackoverflow.com/questions/40620823/if-statement-in-jinja2-template -->
+                  {% for s in students %}
+                    {% if s.id == student_enrollment.student_id %}
+                      <option value="{{s.student_id}}" selected>{{s.student_id}}: {{s.name}}</option>
+                    {% else %}
+                      <option value="{{ s.student_id}}">{{s.student_id}}: {{s.name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              <label>Course ID</label>
+                <select name="course_id" required>
+                  {% for c in courses %}
+                    {% if c.course_id == student_enrollment.course_id %}
+                      <option value="{{c.course_id}}" selected>{{c.course_id}}: {{c.course_name}}</option>
+                    {% else %}
+                      <option value="{{c.course_id}}">{{c.course_id}}: {{c.course_name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
               <label>Is Enrolled</label>
               <select name="is_enrolled" required>
                 <!-- these are hard coded, but you can add code to make this dynamic -->
-                  <option value="1">True</option>
+                {% if student_enrollment.is_enrolled %}
+                  <option value="1" selected>True</option>
                   <option value="0">False</option>
+                {% else %}
+                  <option value="1" selected>True</option>
+                  <option value="0" selected>False</option>
+                {% endif %}
+              </select>
+              <label>Certificate ID</label> 
+                <select name="certificate_id">
+                  <option value="{{None}}">None</option>
+                  {% for cert in certificates %}
+                    {% if cert.certificate_id == student_enrollment.certificate_id %}
+                      <option value="{{cert.certificate_id}}" selected>{{cert.certificate_id}}: {{cert.student_name}}, {{cert.course_name}}</option>
+                    {% else %}
+                      <option value="{{cert.certificate_id}}">{{cert.certificate_id}}: {{cert.student_name}}, {{cert.course_name}}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select>
-              <label>Certificate ID</label> <input type="text" name="certificate_id">
             </fieldset>
-            <input class="btn" type="submit" value="Update">
-            <input class="btn" type="button" value="Clear">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <div class="message_flash">{{ message }}</div>
+                    {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <button class="btn btn-light btn-update" type="submit" >Update</button>
+            <button class="btn btn-light" type="button">Clear</button>
     </form> 
-  </div><!-- update -->
+  </div>
 {% endblock table %}

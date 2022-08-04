@@ -24,6 +24,18 @@ def get():
     return results
 
 
+def find_one(property, value):
+  query = f"SELECT student_enrollment_id, student_id, course_id, is_enrolled, certificate_id FROM Student_Enrollments WHERE {property} = %s;"
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query, (value))
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+
+
 def create(student_id, course_id):
   connection = create_connection()
   with connection.cursor() as cursor:
@@ -44,19 +56,17 @@ def delete(student_enrollment_id):
     connection.close()
 
 
-def update(student_enrollment_id, is_enrolled, certificate_id):
+def update(student_enrollment_id, student_id, course_id, is_enrolled, certificate_id):
   connection = create_connection()
   with connection.cursor() as cursor:
     query = """UPDATE Student_Enrollments 
-                SET is_enrolled = %s, certificate_id = %s
+                SET student_id = %s, course_id = %s, is_enrolled = %s, certificate_id = %s
                 WHERE student_enrollment_id = %s;"""
-    if certificate_id == '': 
-      query = "UPDATE Student_Enrollments SET is_enrolled = %s WHERE student_enrollment_id = %s;"
-      updated_vals = (int(is_enrolled), int(student_enrollment_id))
-    elif certificate_id.isalpha() and certificate_id.lower() == 'none' or certificate_id.lower() == 'null':
-      updated_vals = (int(is_enrolled), None, int(student_enrollment_id))
+
+    if certificate_id.isalpha() and certificate_id.lower() == 'none':
+      updated_vals = (int(student_id), int(course_id), int(is_enrolled), None, int(student_enrollment_id))
     else:
-      updated_vals = (int(is_enrolled), int(certificate_id), int(student_enrollment_id))
+      updated_vals = (int(student_id), int(course_id), int(is_enrolled), int(certificate_id), int(student_enrollment_id))
     cursor.execute(query, updated_vals)
     connection.commit()
     cursor.close()
