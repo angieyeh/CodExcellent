@@ -1,9 +1,10 @@
 ---------------STUDENTS---------------
 -- get all student_ids, names, emails, phone_numbers, pronouns to populate the Students UI
-SELECT student_id , name, email, phone_number, pronoun FROM Students;
+SELECT student_id , name, email, phone_number, pronoun, tutor_id FROM Students;
 -- add a new Student
-INSERT INTO Students (name, email, phone_number, pronoun) VALUES 
-(:name_input, :email_input, :phone_number_input, :pronoun_input);
+INSERT INTO Students (name, email, phone_number, pronoun, tutor_id) VALUES
+(:name_input, :email_input, :phone_number_input, :pronoun_input, :tutor_id_from_dropdown);
+-- update student data
 
 
 ---------------INSTRUCTORS---------------

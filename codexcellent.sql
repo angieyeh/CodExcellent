@@ -22,11 +22,15 @@
 DROP TABLE IF EXISTS `Certificates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Certificates` (
+REATE TABLE `Certificates` (
   `certificate_id` int(11) NOT NULL AUTO_INCREMENT,
   `certificate_title` varchar(100) NOT NULL,
   `issue_date` date NOT NULL,
-  PRIMARY KEY (`certificate_id`)
+  `student_enrollment_id` int(11) NOT NULL,
+  PRIMARY KEY (`certificate_id`),
+  KEY `student_enrollment_id_idx` (`student_enrollment_id`),
+  CONSTRAINT `student_enrollment_id` FOREIGN KEY (`student_enrollment_id`)
+  REFERENCES `Student_Enrollments` (`student_enrollment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,15 +141,11 @@ CREATE TABLE `Student_Enrollments` (
   `student_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `is_enrolled` tinyint(1) NOT NULL DEFAULT 1,
-  `certificate_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`student_enrollment_id`),
   KEY `course_id_idx` (`course_id`),
   KEY `student_id_idx` (`student_id`),
-  KEY `certificate_id_idx` (`certificate_id`),
-  CONSTRAINT `certificate_id` FOREIGN KEY (`certificate_id`) REFERENCES `Certificates` (`certificate_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+  CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE CASCADE ON UPDATE NO ACTION) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,8 +171,11 @@ CREATE TABLE `Students` (
   `email` varchar(100) NOT NULL,
   `phone_number` char(10) DEFAULT NULL,
   `pronoun` varchar(50) DEFAULT NULL,
+  `tutor_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`student_id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  KEY `tutor_id_idx` (`tutor_id`),
+  CONSTRAINT `tutor_id` FOREIGN KEY (`tutor_id`) REFERENCES `Instructors` (`instructor_id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
