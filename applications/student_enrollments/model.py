@@ -10,7 +10,7 @@ def create_connection():
                             cursorclass=pymysql.cursors.DictCursor)
 
 def get():
-  query = """SELECT se.student_enrollment_id, st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled, se.certificate_id 
+  query = """SELECT se.student_enrollment_id, st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled
     FROM Student_Enrollments se
     INNER JOIN Students st ON se.student_id = st.student_id
     INNER JOIN Courses co ON se.course_id = co.course_id;"""
@@ -25,7 +25,7 @@ def get():
 
 
 def find_one(property, value):
-  query = f"SELECT student_enrollment_id, student_id, course_id, is_enrolled, certificate_id FROM Student_Enrollments WHERE {property} = %s;"
+  query = f"SELECT student_enrollment_id, student_id, course_id, is_enrolled FROM Student_Enrollments WHERE {property} = %s;"
 
   connection = create_connection()
   with connection.cursor() as cursor:
@@ -56,18 +56,14 @@ def delete(student_enrollment_id):
     connection.close()
 
 
-def update(student_enrollment_id, student_id, course_id, is_enrolled, certificate_id):
+def update(student_enrollment_id, student_id, course_id, is_enrolled):
   connection = create_connection()
   with connection.cursor() as cursor:
     query = """UPDATE Student_Enrollments 
-                SET student_id = %s, course_id = %s, is_enrolled = %s, certificate_id = %s
+                SET student_id = %s, course_id = %s, is_enrolled = %s
                 WHERE student_enrollment_id = %s;"""
 
-    if certificate_id.isalpha() and certificate_id.lower() == 'none':
-      updated_vals = (int(student_id), int(course_id), int(is_enrolled), None, int(student_enrollment_id))
-    else:
-      updated_vals = (int(student_id), int(course_id), int(is_enrolled), int(certificate_id), int(student_enrollment_id))
-    cursor.execute(query, updated_vals)
+    cursor.execute(query, (int(student_id), int(course_id), int(is_enrolled), int(student_enrollment_id)))
     connection.commit()
     cursor.close()
     connection.close()

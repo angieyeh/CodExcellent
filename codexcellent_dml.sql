@@ -36,21 +36,19 @@ INSERT INTO Certificates (certificate_title, issue_date ) VALUES
 
 ---------------STUDENT_ENROLLMENT---------------
 -- get all student_enrollment_ids , student_ids	, course_ids to populate the Student_Enrollments UI
-SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled, se.certificate_id 
+SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled
 	FROM Student_Enrollments se
 	INNER JOIN Students st ON se.student_id = st.student_id
 	INNER JOIN Courses co ON se.course_id = co.course_id;
 -- retrieve the information of the student being up updated
-SELECT student_enrollment_id, student_id, course_id, is_enrolled, certificate_id FROM Student_Enrollments WHERE student_enrollment_id = :student_enrollment_id_input;
+SELECT student_enrollment_id, student_id, course_id, is_enrolled
+	FROM Student_Enrollments 
+	WHERE student_enrollment_id = :student_enrollment_id_input;
 -- associate a student with a course enrollment (M-to-M relationship addition)
 INSERT INTO Student_Enrollments (student_id, course_id ) VALUES 
 (:student_id_input, :course_id_input);
 -- update a student_enrollment's data based on submission of the Update Certificates form 
-UPDATE Student_Enrollment SET student_id = :student_id_input, course_id = :course_id_input, is_enrolled
-= :is_enrolled_input, certificate_id = certificate_id_input
-	WHERE student_enrollment_id = :student_enrollment_id_input;
--- update a student_enrollment_id's certificate_id nullable - [NULLABLE RELATIONSHIP]
-UPDATE Student_Enrollment SET certificate_id = NULL
+UPDATE Student_Enrollment SET student_id = :student_id_input, course_id = :course_id_input, is_enrolled = :is_enrolled_input
 	WHERE student_enrollment_id = :student_enrollment_id_input;
 -- dis-associate a student from a course (M-to-M relationship deletion)
 DELETE FROM Student_Enrollments WHERE student_enrollment_id = :student_enrollment_id_input;

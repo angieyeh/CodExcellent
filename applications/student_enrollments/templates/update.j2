@@ -40,17 +40,6 @@
                   <option value="0" selected>False</option>
                 {% endif %}
               </select>
-              <label>Certificate ID</label> 
-                <select name="certificate_id">
-                  <option value="{{None}}">None</option>
-                  {% for cert in certificates %}
-                    {% if cert.certificate_id == student_enrollment.certificate_id %}
-                      <option value="{{cert.certificate_id}}" selected>{{cert.certificate_id}}: {{cert.student_name}}, {{cert.course_name}}</option>
-                    {% else %}
-                      <option value="{{cert.certificate_id}}">{{cert.certificate_id}}: {{cert.student_name}}, {{cert.course_name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
             </fieldset>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
