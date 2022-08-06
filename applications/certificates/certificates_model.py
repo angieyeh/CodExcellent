@@ -12,10 +12,10 @@ def create_connection():
 
 def get():
   query = """SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date 
-	FROM Certificates cert
-	INNER JOIN Student_Enrollments se ON cert.certificate_id = se.certificate_id
-	INNER JOIN Students st ON se.student_id = st.student_id
-	INNER JOIN Courses co ON se.course_id = co.course_id;"""
+	  FROM Certificates cert
+	  INNER JOIN Student_Enrollments se ON cert.student_enrollment_id = se.student_enrollment_id
+	  INNER JOIN Students st ON se.student_id = st.student_id
+	  INNER JOIN Courses co ON se.course_id = co.course_id;"""
 
   connection = create_connection()
   with connection.cursor() as cursor:

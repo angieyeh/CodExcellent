@@ -29,7 +29,7 @@ INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES
 -- get all certificate_id , student_name, course_name, certificate_title, issue_date to populate the Certificates UI
 SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date 
 	FROM Certificates cert
-	INNER JOIN Student_Enrollments se ON cert.certificate_id = se.certificate_id
+	INNER JOIN Student_Enrollments se ON cert.student_enrollment_id = se.student_enrollment_id
 	INNER JOIN Students st ON se.student_id = st.student_id
 	INNER JOIN Courses co ON se.course_id = co.course_id;
 -- add a new Certificate
