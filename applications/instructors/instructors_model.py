@@ -15,9 +15,9 @@ def get():
   with connection.cursor() as cursor:
     cursor.execute(query)
     results = cursor.fetchall()
-    return results
     cursor.close()
     connection.close()
+    return results
 
 
 def create(name, email, phone_number, instructor_title, pronoun):
@@ -36,4 +36,14 @@ def create(name, email, phone_number, instructor_title, pronoun):
         query = f"INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (str(name), str(email), int(phone_number), str(instructor_title), str(pronoun)))
     connection.commit()
+    connection.close()
+        
+
+def delete(instructor_id):
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    query = "DELETE FROM Instructors WHERE instructor_id = %s;"
+    cursor.execute(query, (int(instructor_id)))
+    connection.commit()
+    cursor.close()
     connection.close()

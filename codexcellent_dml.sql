@@ -13,6 +13,8 @@ SELECT instructor_id , name, email, phone_number, instructor_title, pronoun FROM
 -- add a new Instructor
 INSERT INTO Instructors (name, email, phone_number, instructor_title, pronoun) VALUES 
 (:name_input, :email_input, :phone_number_input, :instructor_title_input_from_dropdown, :pronoun_input);
+-- delete a instructor to trigger CASCADE delete in Course_Instructors (M-to-M relationship)
+DELETE FROM Instructors WHERE instructor_id = :instructor_id_input;
 
 ---------------COURSES---------------
 -- get all course_ids, course_names, levels, start_dates, end_dates, statuses to populate the Courses UI
@@ -50,7 +52,7 @@ INSERT INTO Student_Enrollments (student_id, course_id ) VALUES
 -- update a student_enrollment's data based on submission of the Update Certificates form 
 UPDATE Student_Enrollment SET student_id = :student_id_input, course_id = :course_id_input, is_enrolled = :is_enrolled_input
 	WHERE student_enrollment_id = :student_enrollment_id_input;
--- dis-associate a student from a course (M-to-M relationship deletion)
+-- delete a student_enrollment and not cause a data anomaly in the entities associated with student_enrollments (M-to-M relationship)
 DELETE FROM Student_Enrollments WHERE student_enrollment_id = :student_enrollment_id_input;
 
 ---------------COURSE_INSTRUCTORS---------------
