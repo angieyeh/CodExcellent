@@ -13,11 +13,18 @@
   <div>
   <table id="browse-se" border="1" cellpadding="5">
     <tr>
-      {% for key in student_enrollments[0].keys() %}
-        <th>{{ key }}</th>
-      {% endfor %}
+      {% if student_enrollments %}
+        {% for key in student_enrollments[0].keys() %}
+          <th>{{ key }}</th>
+        {% endfor %}
+      {% else %}
+        {% for h in table_headers %}
+          <th>{{ h }}</th>
+        {% endfor %}
+      {% endif %}
       <th>Update</th>
       <th>Delete</th>
+      
     </tr>
     {% for se in student_enrollments %}
       <tr data-student-enrollment-id="{{se['student_enrollment_id']}}">

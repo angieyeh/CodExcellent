@@ -21,7 +21,11 @@ instructors_bp = Blueprint(
 def index():
     try:
         results = instructors_model.get()
-        return render_template('instructors.j2', instructors=results)
+        return render_template(
+                    'instructors.j2',
+                    instructors=results,
+                    table_headers=['instructor_id','name','email','phone_number','instructor_title','pronoun']
+                )
     except TemplateNotFound:
         abort(404)
 

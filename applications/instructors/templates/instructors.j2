@@ -16,9 +16,15 @@
     <table border="1" cellpadding="5">
       <thead>
       <tr>
-          {% for key in instructors[0].keys() %}
-            <th>{{ key }}</th>
-          {% endfor %}
+          {% if instructors %}
+              {% for key in instructors[0].keys() %}
+                  <th>{{ key }}</th>
+              {% endfor %}
+          {% else %}
+              {% for h in table_headers %}
+                  <th>{{ h }}</th>
+              {% endfor %}
+          {% endif %}
           <th>Delete</th>
       </tr>
       </thead>

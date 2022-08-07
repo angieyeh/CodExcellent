@@ -9,11 +9,15 @@
     <div id="ci_browse">
       <table border="1" cellpadding="5">
           <thead>
-            <tr>
+            {% if course_instructor %}
               {% for key in course_instructor[0].keys() %}
                 <th>{{ key }}</th>
               {% endfor %}
-            </tr>
+            {% else %}
+              {% for h in table_headers %}
+                <th>{{ h }}</th>
+              {% endfor %}
+            {% endif %}
           </thead>
         <tbody>
         {% for item in course_instructor %}

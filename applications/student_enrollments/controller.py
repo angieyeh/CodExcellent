@@ -28,6 +28,7 @@ def index():
     return render_template(
             'student_enrollments.j2', 
             student_enrollments=student_enrollments,
+            table_headers=['student_enrollment_id',	'student_id', 'student_name', 'course_id', 'course_name', 'course_start_date', 'course_end_date', 'is_enrolled'],
             students=students,
             courses=courses,
             modal_title='Student Enrollments')

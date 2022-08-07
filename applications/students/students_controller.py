@@ -14,7 +14,10 @@ students_bp = Blueprint('students_bp', __name__, template_folder='templates')
 def index():
     try:
         results = students_model.get()
-        return render_template('students.j2', students=results)
+        return render_template(
+                    'students.j2', 
+                    students=results)
+                    
     except TemplateNotFound:
         abort(404)
 
