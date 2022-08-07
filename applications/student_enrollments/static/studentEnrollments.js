@@ -43,7 +43,7 @@ const wireSEDeleteButton = () => {
 }
 
 const wireSETableUpdateButton = () => {
-  $("#browse").on("click", ".btn-update", function() {
+  $("#browse-se").on("click", ".btn-update", function() {
     let studentEnrollmentId = $(this).data('student-enrollment-id')
     window.location.replace(`/student_enrollments/${studentEnrollmentId}`);
   });
