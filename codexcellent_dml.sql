@@ -46,6 +46,8 @@ SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.cou
 SELECT student_enrollment_id, student_id, course_id, is_enrolled
 	FROM Student_Enrollments 
 	WHERE student_enrollment_id = :student_enrollment_id_input;
+-- check if a Student_Enrollment already exists
+SELECT EXISTS(SELECT 1 FROM Student_Enrollments WHERE student_id = :student_id_input AND course_id = :course_id_input) AS se_exists;
 -- associate a student with a course enrollment (M-to-M relationship addition)
 INSERT INTO Student_Enrollments (student_id, course_id ) VALUES 
 (:student_id_input, :course_id_input);

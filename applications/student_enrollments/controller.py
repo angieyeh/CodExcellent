@@ -40,8 +40,12 @@ def index():
 def new():
   s_id = request.form.get('student_id')
   c_id = request.form.get('course_id')
+  se_exists = model.exists(s_id, c_id)
+
   if not (s_id.isnumeric() and c_id.isnumeric()):
     flash("Please provide valid Student ID and Course ID.")
+  elif se_exists[0]['se_exists'] > 0:
+    flash("Please enroll the student into a course they're not currently enrolled in.")
   else:
     model.create(s_id, c_id)
   return redirect(url_for('student_enrollments_bp.index'))

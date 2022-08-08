@@ -67,3 +67,18 @@ def update(student_enrollment_id, student_id, course_id, is_enrolled):
     connection.commit()
     cursor.close()
     connection.close()
+
+
+def exists(student_id, course_id):
+  query = """SELECT EXISTS(
+                SELECT 1 FROM Student_Enrollments WHERE student_id = %s AND course_id = %s) 
+              AS se_exists;"""
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query, (int(student_id), int(course_id)))
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+
