@@ -287,7 +287,7 @@ ALTER TABLE `Course_Instructors`
 -- Constraints for table `Students`
 --
 ALTER TABLE `Students`
-  ADD CONSTRAINT `tutor_id` FOREIGN KEY (`tutor_id`) REFERENCES `Instructors` (`instructor_id`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `tutor_id` FOREIGN KEY (`tutor_id`) REFERENCES `Instructors` (`instructor_id`);
 
 --
 -- Constraints for table `Student_Enrollments`

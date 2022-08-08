@@ -1,6 +1,11 @@
 {#  Citation for the following HTML:
     Date: 07/18/2022
-    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
+    Source URL: bsg_HTML_UI download planets.html file BShttps://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454
+
+    Citation #2 for HTML components
+    Accessed date: 8/1/2022
+    Source: CS340 Flask guide
+    URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/bsg_people_app/templates/people.j2#}
 
 {% extends "layout.j2" %}
 
@@ -23,6 +28,7 @@
             {% for key in student.keys() %}
                 <td>{{student[key]}}</td>
             {% endfor %}
+            <td><a href="students/edit/{{student.student_id}}" class="btn btn-default">Update</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -39,10 +45,17 @@
               <label>Phone Number</label> <input type="number" name="phone_number">
               <label for="pronoun">Pronoun</label>
                 <select name="pronoun" id="pronoun">
-                    <option value="">None</option>
+                    <option value="" selected>None</option>
                     <option value="She/her/her">She/her/her</option>
                     <option value="He/him/his">He/him/his</option>
                     <option value="They/them/their">They/them/their</option>
+                </select>
+                <label>Tutor</label>
+                <select name="instructor_id">
+                    <option value="" selected>None</option>
+                    {% for i in instructors %}
+                        <option value="{{i.instructor_id}}">{{i.instructor_id}}: {{i.name}}</option>
+                    {% endfor %}
                 </select>
             </fieldset>
             {% with messages = get_flashed_messages() %}
@@ -58,5 +71,4 @@
             <input class="btn" type="button" value="Clear">
     </form>
   </div>
-  <p>&nbsp;</p>
 {% endblock table %}

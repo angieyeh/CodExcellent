@@ -1,10 +1,14 @@
 ---------------STUDENTS---------------
--- get all student_ids, names, emails, phone_numbers, pronouns to populate the Students UI
-SELECT student_id , name, email, phone_number, pronoun, tutor_id FROM Students;
+-- get all student_ids, names, emails, phone_numbers, pronouns, tutor_id, and tutor_name(from JOIN Instructors) to populate the Students UI
+SELECT Students.student_id , Students.name, Students.email, Students.phone_number, Students.pronoun, Students.tutor_id, Instructors.name as tutor_name
+FROM Students
+LEFT JOIN Instructors ON Students.tutor_id = Instructors.instructor_id;"""
 -- add a new Student
 INSERT INTO Students (name, email, phone_number, pronoun, tutor_id) VALUES
-(:name_input, :email_input, :phone_number_input, :pronoun_input, :tutor_id_from_dropdown);
--- update student data
+(:name_input, :email_input, :phone_number_input, :pronoun_input_dropdown, :tutor_id_dropdown);
+-- update student data -- Nullable relationship (tutor_id)
+UPDATE Students SET name = :name_input, email = :email_input, phone_number = :phone_number_input,
+pronoun = :pronoun_input_dropdown , tutor_id = :tutor_id_dropdown WHERE student_id = :student_id_selected;
 
 
 ---------------INSTRUCTORS---------------

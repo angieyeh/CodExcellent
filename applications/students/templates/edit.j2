@@ -1,0 +1,41 @@
+{% extends "layout.j2" %}
+
+{% block table %}
+  <div id="edit">
+		<!-- form to update data in Students-->
+		<form id="editPerson" action="{{students.student_id}}" method="post">
+			<legend><strong>Update Student</strong></legend>
+			<fieldset>
+				<label for="student_id"></label>
+				<input type="hidden" value="{{students.student_id}}" class="form-control" id="student_id" name="student_id" required>
+
+				<label for="name">Full Name</label>
+				<input type="text" class="form-control" id="name" name="name" value="{{students[0].name}}" required>
+
+  				<label for="email">Email</label>
+				<input type="text" class="form-control" id="email" name="email"  value="{{students[0].email}}" required>
+
+				<label>Phone Number</label>
+				<input type="number" name="phone_number" value="{{students[0].phone_number}}">
+              	<label for="pronoun"> Pronoun </label>
+                <select name="pronoun" id="pronoun">
+                    <option value="">None</option>
+                    <option value="She/her/her">She/her/her</option>
+                    <option value="He/him/his">He/him/his</option>
+                    <option value="They/them/their">They/them/their</option>
+                </select>
+				<label>Tutor</label>
+				<select id="tutor_id" name="tutor_id">
+                    <option value="">None</option>
+					{% for i in instructors %}
+                        <option value="{{i.instructor_id}}">{{i.instructor_id}}: {{i.name}}</option>
+                    {% endfor %}
+				</select>
+
+            </fieldset>
+            <input type="submit" value="Edit Person" name="Edit_Person" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/people'><input class="btn" type="button" value="cancel"></a>
+        </form>
+  </div>
+
+{% endblock table %}
