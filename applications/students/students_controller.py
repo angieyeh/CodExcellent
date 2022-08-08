@@ -17,7 +17,12 @@ def index():
     try:
         students = students_model.get()
         instructors = instructors_model.get()
-        return render_template('students.j2', students=students, instructors=instructors)
+        return render_template(
+                'students.j2', 
+                students=students,
+                instructors=instructors,
+                table_headers=['student_id','name','email','phone_number','pronoun','tutor_id'])
+                    
     except TemplateNotFound:
         abort(404)
 
