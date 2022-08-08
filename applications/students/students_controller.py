@@ -22,7 +22,6 @@ def index():
                 students=students,
                 instructors=instructors,
                 table_headers=['student_id','name','email','phone_number','pronoun','tutor_id'])
-                    
     except TemplateNotFound:
         abort(404)
 

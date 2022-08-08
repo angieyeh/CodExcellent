@@ -183,12 +183,42 @@ CREATE TABLE `Students` (
 -- Dumping data for table `Students`
 --
 
+<<<<<<< HEAD
 LOCK TABLES `Students` WRITE;
 /*!40000 ALTER TABLE `Students` DISABLE KEYS */;
 INSERT INTO `Students` VALUES (1,'Chloe Decker','chloedecker@gmail.com','2025550108','she/her',NULL),(2,'Ella Lopez','ellalopez@gmail.com','2025550185','she/her',NULL),(3,'Dan Espinoza','danespinoza@gmail.com','2025550114','he/him',1),(4,'Rory Gilmore','rorygilmore@gmail.com','2025555514',NULL, 2);
 /*!40000 ALTER TABLE `Students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+=======
+--
+-- Constraints for table `Certificates`
+--
+ALTER TABLE `Certificates`
+  ADD CONSTRAINT `student_enrollment_id` FOREIGN KEY (`student_enrollment_id`) REFERENCES `Student_Enrollments` (`student_enrollment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Course_Instructors`
+--
+ALTER TABLE `Course_Instructors`
+  ADD CONSTRAINT `course_id_2` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `instructor_id` FOREIGN KEY (`instructor_id`) REFERENCES `Instructors` (`instructor_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Students`
+--
+ALTER TABLE `Students`
+  ADD CONSTRAINT `tutor_id` FOREIGN KEY (`tutor_id`) REFERENCES `Instructors` (`instructor_id`);
+
+--
+-- Constraints for table `Student_Enrollments`
+--
+ALTER TABLE `Student_Enrollments`
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
+>>>>>>> e05e0a0 (Added Update functionality for Students with tutor_id as a dropdown)
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
