@@ -32,10 +32,10 @@
                         <div class="navbar-nav ms-auto">
                             <a class="nav-item nav-link" href="/students">Students</a>
                             <a class="nav-item nav-link" href="/student_enrollments">Student Enrollments</a>
-                            <a class="nav-item nav-link" href="/instructors">Instructors</a>
-                            <a class="nav-item nav-link" href="/courses">Courses</a>
-                            <a class="nav-item nav-link" href="course_instructor">Course Instructors</a>
                             <a class="nav-item nav-link" href="/certificates">Certificates</a>
+                            <a class="nav-item nav-link" href="/courses">Courses</a>
+                            <a class="nav-item nav-link" href="/instructors">Instructors</a>
+                            <a class="nav-item nav-link" href="course_instructor">Course Instructors</a>
                         </div>
                     </div>
                 </div>
@@ -62,6 +62,7 @@
                 crossorigin="anonymous"></script>
         {% block javascript %}
             <script src="{{ url_for('student_enrollments_bp.static', filename="studentEnrollments.js") }}"></script>
+            <script src="{{ url_for('instructors_bp.static', filename="instructors.js") }}"></script>
         {% endblock %}
     </body>
 

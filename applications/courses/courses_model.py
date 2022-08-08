@@ -21,7 +21,7 @@ def get(active=None):
     return results
 
 
-def find_by(property, value):
+def find_one(property, value):
   query = f"SELECT course_id, course_name, level, start_date, end_date, status FROM Courses WHERE {property} = %s;"
 
   connection = create_connection()

@@ -4,34 +4,42 @@
 
 {% extends "layout.j2" %}
 
-{% with modal_title=modal_title, modal_body=modal_body, button_action='Delete', classes='btn-delete' %}
+{% with modal_title=modal_title %}
   {% include "components/_modal.j2" %}
 {% endwith %}
 
 
 {% block table %}
   <div>
-  <table id="browse" border="1" cellpadding="5">
+  <table id="browse-se" border="1" cellpadding="5">
     <tr>
-      {% for key in student_enrollments[0].keys() %}
-        <th>{{ key }}</th>
-      {% endfor %}
+      {% if student_enrollments %}
+        {% for key in student_enrollments[0].keys() %}
+          <th>{{ key }}</th>
+        {% endfor %}
+      {% else %}
+        {% for h in table_headers %}
+          <th>{{ h }}</th>
+        {% endfor %}
+      {% endif %}
       <th>Update</th>
       <th>Delete</th>
+      
     </tr>
     {% for se in student_enrollments %}
       <tr data-student-enrollment-id="{{se['student_enrollment_id']}}">
         {% for key in se.keys() %}
           <td>{{se[key]}}</td>
         {% endfor %}
-        <td><a href="student_enrollments/{{se['student_enrollment_id']}}">Update</a></td>
+        <td>
+          <button class="btn btn-secondary btn-update" type="submit" data-student-enrollment-id="{{se['student_enrollment_id']}}">Update</button>
+        </td>
         <td>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-danger btn-modal-delete" data-toggle="modal" data-target="#modal" data-student-enrollment-id="{{se['student_enrollment_id']}}">
             Delete
           </button>
         </td>
-        
       </tr>
     {% endfor %}
   </table>

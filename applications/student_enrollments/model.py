@@ -10,7 +10,7 @@ def create_connection():
                             cursorclass=pymysql.cursors.DictCursor)
 
 def get():
-  query = """SELECT se.student_enrollment_id, st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled, se.certificate_id 
+  query = """SELECT se.student_enrollment_id, st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled
     FROM Student_Enrollments se
     INNER JOIN Students st ON se.student_id = st.student_id
     INNER JOIN Courses co ON se.course_id = co.course_id;"""
@@ -18,6 +18,18 @@ def get():
   connection = create_connection()
   with connection.cursor() as cursor:
     cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+
+
+def find_one(property, value):
+  query = f"SELECT student_enrollment_id, student_id, course_id, is_enrolled FROM Student_Enrollments WHERE {property} = %s;"
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query, (value))
     results = cursor.fetchall()
     cursor.close()
     connection.close()
@@ -44,20 +56,29 @@ def delete(student_enrollment_id):
     connection.close()
 
 
-def update(student_enrollment_id, is_enrolled, certificate_id):
+def update(student_enrollment_id, student_id, course_id, is_enrolled):
   connection = create_connection()
   with connection.cursor() as cursor:
     query = """UPDATE Student_Enrollments 
-                SET is_enrolled = %s, certificate_id = %s
+                SET student_id = %s, course_id = %s, is_enrolled = %s
                 WHERE student_enrollment_id = %s;"""
-    if certificate_id == '': 
-      query = "UPDATE Student_Enrollments SET is_enrolled = %s WHERE student_enrollment_id = %s;"
-      updated_vals = (int(is_enrolled), int(student_enrollment_id))
-    elif certificate_id.isalpha() and certificate_id.lower() == 'none' or certificate_id.lower() == 'null':
-      updated_vals = (int(is_enrolled), None, int(student_enrollment_id))
-    else:
-      updated_vals = (int(is_enrolled), int(certificate_id), int(student_enrollment_id))
-    cursor.execute(query, updated_vals)
+
+    cursor.execute(query, (int(student_id), int(course_id), int(is_enrolled), int(student_enrollment_id)))
     connection.commit()
     cursor.close()
     connection.close()
+
+
+def exists(student_id, course_id):
+  query = """SELECT EXISTS(
+                SELECT 1 FROM Student_Enrollments WHERE student_id = %s AND course_id = %s) 
+              AS se_exists;"""
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query, (int(student_id), int(course_id)))
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+

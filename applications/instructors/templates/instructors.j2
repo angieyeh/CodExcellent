@@ -4,25 +4,41 @@
 
 {% extends "layout.j2" %}
 
+{% with modal_title=modal_title %}
+  {% include "components/_modal.j2" %}
+{% endwith %}
+
 {% block table %}
   <h1>Manage Instructors</h1>
 
 <!-- browse -->
-  <div id="browse">
+  <div id="browse-instructors">
     <table border="1" cellpadding="5">
       <thead>
       <tr>
-          {% for key in instructors[0].keys() %}
-            <th>{{ key }}</th>
-          {% endfor %}
+          {% if instructors %}
+              {% for key in instructors[0].keys() %}
+                  <th>{{ key }}</th>
+              {% endfor %}
+          {% else %}
+              {% for h in table_headers %}
+                  <th>{{ h }}</th>
+              {% endfor %}
+          {% endif %}
+          <th>Delete</th>
       </tr>
       </thead>
     <tbody>
     {% for instructor in instructors %}
-        <tr>
+        <tr data-instructor-id="{{instructor.instructor_id}}">
             {% for key in instructor.keys() %}
                 <td>{{instructor[key]}}</td>
             {% endfor %}
+            <td>
+              <button type="button" class="btn btn-danger btn-modal-delete" data-toggle="modal" data-target="#modal" data-instructor-id="{{instructor['instructor_id']}}">
+                Delete
+              </button>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

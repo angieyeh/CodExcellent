@@ -14,7 +14,11 @@ courses_bp = Blueprint('courses_bp', __name__, template_folder='templates')
 def index():
     try:
         results = courses_model.get()
-        return render_template('courses.j2', courses=results)
+        return render_template(
+                    'courses.j2',
+                    courses=results,
+                    table_headers=['course_id',	'course_name', 'level',	
+                    'start_date', 'end_date', 'status'])
     except TemplateNotFound:
         abort(404)
 

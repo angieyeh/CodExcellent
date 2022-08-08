@@ -23,7 +23,8 @@ def index():
             'course_instructor.j2',
             course_instructor=course_instructor,
             courses=courses,
-            instructors=instructors)
+            instructors=instructors,
+            table_headers=['course_id',	'course_name', 'instructor_id',	'name',	'instructor_title'])
     except TemplateNotFound:
         abort(404)
 

@@ -8,13 +8,24 @@ from applications.instructors import instructors_model
   Flask Blueprints
   Source URL: https://hackersandslackers.com/flask-blueprints
 """
-instructors_bp = Blueprint('instructors_bp', __name__, template_folder='templates')
+instructors_bp = Blueprint(
+                    'instructors_bp',
+                    __name__,
+                    template_folder='templates',
+                    static_folder='static',
+                    static_url_path='/applications/instructors/static'
+                )
+
 
 @instructors_bp.get('/instructors')
 def index():
     try:
         results = instructors_model.get()
-        return render_template('instructors.j2', instructors=results)
+        return render_template(
+                    'instructors.j2',
+                    instructors=results,
+                    table_headers=['instructor_id','name','email','phone_number','instructor_title','pronoun']
+                )
     except TemplateNotFound:
         abort(404)
 
@@ -33,3 +44,12 @@ def new():
     else:
         instructors_model.create(name, email, phone_number, instructor_title, pronoun)
     return redirect(url_for('instructors_bp.index'))
+
+
+@instructors_bp.delete("/instructors/<int:instructor_id>")
+def delete(instructor_id):
+    if type(instructor_id) != int:
+        flash('Please provide a valid Instructor Id.')
+    else:
+        instructors_model.delete(instructor_id)
+        return {'instructor_id': instructor_id}

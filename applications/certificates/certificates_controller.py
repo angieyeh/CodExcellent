@@ -15,7 +15,10 @@ certificates_bp = Blueprint('certificates_bp', __name__, template_folder='templa
 def index():
     try:
         results = certificates_model.get()
-        return render_template('certificates.j2', certificates=results)
+        return render_template(
+                'certificates.j2',
+                certificates=results,
+                table_headers=['certificate_id', 'student_name', 'course_name', 'certificate_title', 'issue_date'])
     except TemplateNotFound:
         abort(404)
 
