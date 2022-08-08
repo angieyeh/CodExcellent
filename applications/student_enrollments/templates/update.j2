@@ -10,9 +10,11 @@
               <label>Student Enrollment ID {{student_enrollment.student_enrollment_id}}:</label>
               <label>Student ID</label>
                 <select name="student_id" required>
-                  <!-- https://stackoverflow.com/questions/40620823/if-statement-in-jinja2-template -->
+                  {#  Citation for if/else in jinja: 
+                      Date: 08/01/2022
+                      Source URL: https://stackoverflow.com/questions/40620823/if-statement-in-jinja2-template #}
                   {% for s in students %}
-                    {% if s.id == student_enrollment.student_id %}
+                    {% if s.student_id == student_enrollment.student_id %}
                       <option value="{{s.student_id}}" selected>{{s.student_id}}: {{s.name}}</option>
                     {% else %}
                       <option value="{{ s.student_id}}">{{s.student_id}}: {{s.name}}</option>
