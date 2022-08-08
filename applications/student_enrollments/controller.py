@@ -69,9 +69,6 @@ def update(student_enrollment_id):
   s_id = request.form.get('student_id')
   c_id = request.form.get('course_id')
   is_enrolled = request.form.get('is_enrolled')
-  model.find_one(student_enrollment_id)
-  
-  se_exists = model.exists(s_id, c_id)
 
   if not (s_id.isnumeric() and
           c_id.isnumeric() and
@@ -79,8 +76,14 @@ def update(student_enrollment_id):
           flash('Please provide a valid Student Id, Course Id, and Enrollment Status')
           return redirect(url_for('student_enrollments_bp.edit', student_enrollment_id=student_enrollment_id))
   else: 
-    model.update(student_enrollment_id, s_id, c_id, is_enrolled)
-    return redirect(url_for('student_enrollments_bp.index'))
+    se = model.find_one('student_enrollment_id',student_enrollment_id)
+    if s_id != se[0]['student_id'] or c_id != c_se[0]['course_id']:
+      if model.exists(s_id, c_id)[0]['se_exists'] > 0:
+        flash(f"Please update a student's enrollment into a course they're not already enrolled in.")
+        return redirect(url_for('student_enrollments_bp.update',student_enrollment_id=student_enrollment_id))
+    else:
+      model.update(student_enrollment_id, s_id, c_id, is_enrolled)
+      return redirect(url_for('student_enrollments_bp.index'))
 
 
 @student_enrollments_bp.delete("/student_enrollments/<int:student_enrollment_id>")
