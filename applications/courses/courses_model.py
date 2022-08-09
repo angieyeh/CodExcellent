@@ -23,7 +23,6 @@ def get(active=None):
 
 def find_one(property, value):
   query = f"SELECT course_id, course_name, level, start_date, end_date, status FROM Courses WHERE {property} = %s;"
-
   connection = create_connection()
   with connection.cursor() as cursor:
     cursor.execute(query, (value))
@@ -44,7 +43,6 @@ def create(course_name, level, start_date, end_date, status):
 
 def search(course_name):
   query = f"SELECT course_id, course_name, level, start_date, end_date, status FROM Courses WHERE course_name = %s;"
-
   connection = create_connection()
   with connection.cursor() as cursor:
     cursor.execute(query, str(course_name))

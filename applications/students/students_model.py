@@ -41,21 +41,23 @@ def get_by(student_id):
 def create(name, email, phone_number, pronoun, tutor_id):
   connection = create_connection()
   with connection.cursor() as cursor:
-    if phone_number == '' and pronoun == '' and tutor_id == '':
-        query = f"INSERT INTO Students (name, email) VALUES (%s, %s)"
-        cursor.execute(query, (str(name), str(email)))
-    elif pronoun == '':
-        query = f"INSERT INTO Students (name, email, phone_number, tutor_id) VALUES (%s, %s, %s, %s)"
-        cursor.execute(query, (str(name), str(email), int(phone_number), int(tutor_id)))
-    elif tutor_id == '':
-        query = f"INSERT INTO Students (name, email, phone_number, pronoun) VALUES (%s, %s, %s, %s)"
-        cursor.execute(query, (str(name), str(email), int(phone_number), str(pronoun)))
-    elif phone_number == '':
-        query = f"INSERT INTO Students (name, email, pronoun, tutor_id) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(query, (str(name), str(email), str(pronoun), int(tutor_id)))
+    if phone_number:
+        phone_number = ''.join(c for c in phone_number if c.isdigit())
     else:
-        query = f"INSERT INTO Students (name, email, phone_number, pronoun, tutor_id) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(query, (str(name), str(email), int(phone_number), str(pronoun), int(tutor_id)))
+        phone_number = None
+
+    if pronoun == '':
+        pronoun = None
+    else:
+        pronoun = str(pronoun)
+
+    if tutor_id == '':
+        tutor_id = None
+    else:
+        tutor_id = int(tutor_id)
+
+    query = f"INSERT INTO Students (name, email, phone_number, pronoun, tutor_id) VALUES (%s, %s, %s, %s, %s)"
+    cursor.execute(query, (str(name), str(email), phone_number, pronoun, tutor_id))
     connection.commit()
     connection.close()
 
@@ -63,22 +65,23 @@ def create(name, email, phone_number, pronoun, tutor_id):
 def update(student_id, name, email, phone_number, pronoun, tutor_id):
     connection = create_connection()
     with connection.cursor() as cursor:
-        if tutor_id == '' and pronoun == '' and phone_number == '':
-            query = """UPDATE Students SET name = %s, email = %s, phone_number = %s, pronoun = %s, tutor_id = %s 
-            WHERE student_id = %s;"""
-            new_values = (str(name), str(email), None, None, None, int(student_id))
-        elif tutor_id == '':
-            query = """UPDATE Students SET name = %s, email = %s, phone_number = %s, pronoun = %s, tutor_id = %s 
-            WHERE student_id = %s;"""
-            new_values = (str(name), str(email), int(phone_number), str(pronoun), None, int(student_id))
-        elif pronoun == '':
-            query = """UPDATE Students SET name = %s, email = %s, phone_number = %s, pronoun = %s, tutor_id = %s
-                        WHERE student_id = %s;"""
-            new_values = (str(name), str(email), int(phone_number), None, int(student_id))
+        if phone_number:
+            phone_number = ''.join(c for c in phone_number if c.isdigit())
         else:
-            query = """UPDATE Students SET name = %s, email = %s, phone_number = %s, pronoun = %s, tutor_id = %s 
+            phone_number = None
+
+        if pronoun == '':
+            pronoun = None
+        else:
+            pronoun = str(pronoun)
+
+        if tutor_id == '':
+            tutor_id = None
+        else:
+            tutor_id = int(tutor_id)
+        query = """UPDATE Students SET name = %s, email = %s, phone_number = %s, pronoun = %s, tutor_id = %s 
             WHERE student_id = %s;"""
-            new_values = (str(name), str(email), int(phone_number), str(pronoun), int(tutor_id), int(student_id))
+        new_values = (str(name), str(email), phone_number, pronoun, tutor_id, int(student_id))
         cursor.execute(query, new_values)
         connection.commit()
         cursor.close()

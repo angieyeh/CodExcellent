@@ -3,7 +3,7 @@
 {% block table %}
   <div id="edit">
 		<!-- form to update data in Students-->
-		<form id="editPerson" action="{{students.student_id}}" method="post">
+		<form id="editPerson" action="{{students.student_id}}" method="POST">
 			<legend><strong>Update Student</strong></legend>
 			<fieldset>
 				<label for="student_id"></label>
@@ -16,7 +16,7 @@
 				<input type="text" class="form-control" id="email" name="email"  value="{{students[0].email}}" required>
 
 				<label>Phone Number</label>
-				<input type="number" name="phone_number" value="{{students[0].phone_number}}">
+				<input type="text" name="phone_number" value="{{students[0].phone_number}}">
               	<label for="pronoun"> Pronoun </label>
                 <select name="pronoun" id="pronoun">
                     <option value="">None</option>
@@ -33,8 +33,8 @@
 				</select>
 
             </fieldset>
-            <input type="submit" value="Edit Person" name="Edit_Person" class="btn btn-primary" style="margin:.5rem;">
-                <a href='/people'><input class="btn" type="button" value="cancel"></a>
+            <input type="submit" value="Update" name="Edit_Student" class="btn btn-success" style="margin:.5rem;">
+			<a href='/students'><input class="btn" type="button" value="Back"></a>
         </form>
   </div>
 

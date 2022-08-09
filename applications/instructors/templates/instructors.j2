@@ -51,7 +51,7 @@
             <fieldset class="fields">
                 <label>Name</label> <input type="text" name="name" required>
                 <label>Email</label> <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                <label>Phone Number</label> <input type="number" name="phone_number">
+                <label>Phone Number</label> <input type="text" name="phone_number">
                 <label for="instructor_title">Instructor Title</label>
                     <select name="instructor_title" id="instructor_title">
                         <option value="Teacher">Teacher</option>
@@ -76,7 +76,6 @@
               {% endif %}
             {% endwith %}
             <input class="btn" type="submit" value="Add">
-            <input class="btn" type="button" value="Clear">
-    </form>
+      </form>
   </div>
 {% endblock table %}
