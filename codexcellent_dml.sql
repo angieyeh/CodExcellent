@@ -30,15 +30,15 @@ INSERT INTO Courses (course_name, level, start_date, end_date, status) VALUES
 (:course_names_input, :level_input_from_dropdown, :start_date_input, :end_date_input, :status_input_from_dropdown);
 
 ---------------CERTIFICATES---------------
--- get all certificate_id , student_name, course_name, certificate_title, issue_date to populate the Certificates UI
-SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date 
+-- get all Certificates and the attributes certificate_id, student_name, course_name, certificate_title, issue_date to populate the Certificates UI
+SELECT cert.certificate_id, st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date, cert.student_enrollment_id
 	FROM Certificates cert
 	INNER JOIN Student_Enrollments se ON cert.student_enrollment_id = se.student_enrollment_id
 	INNER JOIN Students st ON se.student_id = st.student_id
 	INNER JOIN Courses co ON se.course_id = co.course_id;
 -- add a new Certificate
-INSERT INTO Certificates (certificate_title, issue_date ) VALUES 
-(:certificate_title_input, :issue_date_input);
+INSERT INTO Certificates (certificate_title, issue_date, student_enrollment_id) VALUES 
+(:certificate_title_input, :issue_date_input, :student_enrollment_id_input);
 
 ---------------STUDENT_ENROLLMENT---------------
 -- get all student_enrollment_ids , student_ids	, course_ids to populate the Student_Enrollments UI
@@ -46,6 +46,12 @@ SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.cou
 	FROM Student_Enrollments se
 	INNER JOIN Students st ON se.student_id = st.student_id
 	INNER JOIN Courses co ON se.course_id = co.course_id;
+-- get all student_enrollments who don't have a Certificate
+SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled
+	FROM Student_Enrollments se
+	INNER JOIN Students st ON se.student_id = st.student_id
+	INNER JOIN Courses co ON se.course_id = co.course_id
+    WHERE NOT EXISTS (SELECT * FROM Certificates cert WHERE cert.student_enrollment_id = se.student_enrollment_id);
 -- retrieve the information of the student being up updated
 SELECT student_enrollment_id, student_id, course_id, is_enrolled
 	FROM Student_Enrollments 
