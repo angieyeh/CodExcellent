@@ -11,7 +11,7 @@ def create_connection():
                             cursorclass=pymysql.cursors.DictCursor)
 
 def get():
-  query = """SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date 
+  query = """SELECT cert.certificate_id , st.name as student_name, co.course_name, cert.certificate_title, cert.issue_date, cert.student_enrollment_id 
 	  FROM Certificates cert
 	  INNER JOIN Student_Enrollments se ON cert.student_enrollment_id = se.student_enrollment_id
 	  INNER JOIN Students st ON se.student_id = st.student_id

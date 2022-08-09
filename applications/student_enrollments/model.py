@@ -24,6 +24,27 @@ def get():
     return results
 
 
+def get_se_without_certs():
+  # Date: 08/08/2022
+  # Adapted from:
+  # Source URL: https://stackoverflow.com/questions/4076098/how-to-select-rows-with-no-matching-entry-in-another-table
+
+  query = """SELECT se.student_enrollment_id , st.student_id, st.name as student_name, co.course_id, co.course_name, co.start_date as course_start_date, co.end_date as course_end_date, se.is_enrolled
+	FROM Student_Enrollments se
+	INNER JOIN Students st ON se.student_id = st.student_id
+	INNER JOIN Courses co ON se.course_id = co.course_id
+    WHERE NOT EXISTS (SELECT * FROM Certificates cert WHERE cert.student_enrollment_id = se.student_enrollment_id);"""
+
+  connection = create_connection()
+  with connection.cursor() as cursor:
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return results
+  
+
+
 def find_one(property, value):
   query = f"SELECT student_enrollment_id, student_id, course_id, is_enrolled FROM Student_Enrollments WHERE {property} = %s;"
 

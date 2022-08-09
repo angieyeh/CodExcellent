@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for, flash
 from jinja2 import TemplateNotFound
 from applications.certificates import certificates_model
+from applications.student_enrollments import model
 from datetime import datetime
 
 """ 
@@ -15,10 +16,12 @@ certificates_bp = Blueprint('certificates_bp', __name__, template_folder='templa
 def index():
     try:
         results = certificates_model.get()
+        se_res = model.get_se_without_certs()
         return render_template(
                 'certificates.j2',
                 certificates=results,
-                table_headers=['certificate_id', 'student_name', 'course_name', 'certificate_title', 'issue_date'])
+                student_enrollments=se_res,
+                table_headers=['certificate_id', 'student_name', 'course_name', 'certificate_title', 'issue_date', 'student_enrollment_id'])
     except TemplateNotFound:
         abort(404)
 

@@ -1,5 +1,6 @@
 {#  Citation for the following HTML: 
     Date: 07/18/2022
+    Adapted from:
     Source URL: bsg_HTML_UI download planets.html file BS https://canvas.oregonstate.edu/courses/1879182/assignments/8895208?module_item_id=22241454 #}
 
 {% extends "layout.j2" %}
@@ -40,6 +41,12 @@
             <fieldset class="fields">
               <label>Certificate Title</label> <input type="text" name="certificate_title">
               <label>Issue Date</label> <input type="date" name="issue_date">  
+              <label>Student Enrollment ID</label>
+              <select name="student_enrollment_id" required>
+                  {% for se in student_enrollments %}
+                    <option value="{{se.student_enrollment_id}}">{{se.student_enrollment_id}}: {{se.student_name}} | {{se.course_name}}</option>
+                  {% endfor %}
+              </select>
             </fieldset>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
