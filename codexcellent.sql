@@ -129,7 +129,7 @@ CREATE TABLE `Instructors` (
   `instructor_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone_number` char(10) DEFAULT NULL,
+  `phone_number` varchar(30) DEFAULT NULL,
   `pronoun` varchar(50) DEFAULT NULL,
   `instructor_title` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -161,7 +161,7 @@ CREATE TABLE `Students` (
   `student_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone_number` char(10) DEFAULT NULL,
+  `phone_number` varchar(30) DEFAULT NULL,
   `pronoun` varchar(50) DEFAULT NULL,
   `tutor_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
