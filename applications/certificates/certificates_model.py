@@ -26,10 +26,10 @@ def get():
     return results
 
 
-def create(certificate_title, issue_date):
+def create(certificate_title, issue_date, se_id):
   connection = create_connection()
   with connection.cursor() as cursor:
-    query = f"INSERT INTO Certificates (certificate_title, issue_date) VALUES (%s, %s)"
-    cursor.execute(query, (str(certificate_title), str(issue_date)))
+    query = f"INSERT INTO Certificates (certificate_title, issue_date, student_enrollment_id) VALUES (%s, %s, %s)"
+    cursor.execute(query, (str(certificate_title), str(issue_date), int(se_id)))
     connection.commit()
     connection.close()
