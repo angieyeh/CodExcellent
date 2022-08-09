@@ -12,30 +12,30 @@
 				<label for="name">Full Name</label>
 				<input type="text" class="form-control" id="name" name="name" value="{{students[0].name}}" required>
 
-  				<label for="email">Email</label>
+  			<label for="email">Email</label>
 				<input type="text" class="form-control" id="email" name="email"  value="{{students[0].email}}" required>
 
 				<label>Phone Number</label>
 				<input type="text" name="phone_number" value="{{students[0].phone_number}}">
-              	<label for="pronoun"> Pronoun </label>
-                <select name="pronoun" id="pronoun">
-                    <option value="">None</option>
-                    <option value="She/her/her">She/her/her</option>
-                    <option value="He/him/his">He/him/his</option>
-                    <option value="They/them/their">They/them/their</option>
-                </select>
+				<label for="pronoun"> Pronoun </label>
+				<select name="pronoun" id="pronoun">
+						<option value="">None</option>
+						<option value="She/her/her">She/her/her</option>
+						<option value="He/him/his">He/him/his</option>
+						<option value="They/them/their">They/them/their</option>
+				</select>
 				<label>Tutor</label>
 				<select id="tutor_id" name="tutor_id">
-                    <option value="">None</option>
-					{% for i in instructors %}
-                        <option value="{{i.instructor_id}}">{{i.instructor_id}}: {{i.name}}</option>
-                    {% endfor %}
+					<option value="">None</option>
+						{% for i in instructors %}
+							<option value="{{i.instructor_id}}">{{i.instructor_id}}: {{i.name}}</option>
+						{% endfor %}
 				</select>
 
-            </fieldset>
-            <input type="submit" value="Update" name="Edit_Student" class="btn btn-success" style="margin:.5rem;">
+      </fieldset>
+			<input type="submit" value="Update" name="Edit_Student" class="btn btn-success" style="margin:.5rem;">
 			<a href='/students'><input class="btn" type="button" value="Back"></a>
-        </form>
+    </form>
   </div>
 
 {% endblock table %}
