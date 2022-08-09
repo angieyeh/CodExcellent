@@ -6,9 +6,9 @@ from datetime import datetime
 from dateutil.parser import parser
 
 """ 
-  Citation for the following HTML:
+  Citation for the following Flask Blueprints:
   Date: 07/27/2022
-  Flask Blueprints
+  Adapted from:
   Source URL: https://hackersandslackers.com/flask-blueprints
 """
 certificates_bp = Blueprint('certificates_bp', __name__, template_folder='templates')
