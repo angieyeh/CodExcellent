@@ -77,7 +77,7 @@ def update(student_enrollment_id):
           return redirect(url_for('student_enrollments_bp.edit', student_enrollment_id=student_enrollment_id))
   else: 
     se = model.find_one('student_enrollment_id',student_enrollment_id)
-    if s_id != se[0]['student_id'] or c_id != se[0]['course_id']:
+    if int(s_id) != se[0]['student_id'] or int(s_id) != se[0]['course_id']:
       if model.exists(s_id, c_id)[0]['se_exists'] > 0:
         flash(f"Please update a student's enrollment into a course they're not already enrolled in.")
         return redirect(url_for('student_enrollments_bp.update',student_enrollment_id=student_enrollment_id))
